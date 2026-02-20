@@ -1,0 +1,16 @@
+../src/LCD.c:114:6:LCD_setup	8	static
+../src/LCD.c:148:6:LCD_init	8	static
+../src/LCD.c:194:5:LCD_display	16	static
+../src/LCD.c:231:13:esc_op	24	static
+../src/LCD.c:336:6:LCD_locate	32	static
+../src/LCD.c:356:5:LCD_puts	16	static
+../src/LCD.c:374:5:LCD_putchar	16	static
+../src/LCD.c:401:12:read_buf	16	static
+../src/LCD.c:433:6:LCD_reset_lcdbuf	4	static
+../src/LCD.c:451:16:LCD_read_4bitDB	16	static
+../src/LCD.c:470:13:LCD_write_4bitDB	16	static
+../src/LCD.c:487:16:LCD_read_nibble	24	static
+../src/LCD.c:516:16:LCD_read_byte	24	static
+../src/LCD.c:535:13:LCD_write_nibble	16	static
+../src/LCD.c:565:13:LCD_write_byte	16	static
+../src/LCD.c:579:13:LCD_is_busy	16	static

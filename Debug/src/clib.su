@@ -1,0 +1,4 @@
+../src/clib.c:39:7:myitoa	32	static
+../src/clib.c:76:14:reverse	32	static
+../src/clib.c:103:13:swapUint16	24	static
+../src/clib.c:119:6:sortUint16	32	static

@@ -1,0 +1,6 @@
+../src/tactSW.c:45:6:tactSW_setup	16	static
+../src/tactSW.c:70:6:tactSW_isfix	4	static
+../src/tactSW.c:82:10:tactSW_read	8	static
+../src/tactSW.c:94:10:tactSW_getTsw	4	static
+../src/tactSW.c:106:6:tactSW_update	16	static
+../src/tactSW.c:119:14:tactSW_getStatus	24	static

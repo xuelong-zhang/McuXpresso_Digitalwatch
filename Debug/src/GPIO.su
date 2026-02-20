@@ -1,0 +1,5 @@
+../src/GPIO.c:38:6:GPIO_setDir	32	static
+../src/GPIO.c:123:6:GPIO_setValue	24	static
+../src/GPIO.c:207:6:GPIO_setValueBit	32	static
+../src/GPIO.c:312:9:GPIO_getValueBit	24	static
+../src/GPIO.c:393:10:GPIO_getValue	24	static

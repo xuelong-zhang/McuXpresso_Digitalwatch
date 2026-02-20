@@ -1,0 +1,2 @@
+../src/LCDcounter.c:28:5:main	64	static
+../src/LCDcounter.c:104:13:SYS_init	8	static

@@ -1,0 +1,4 @@
+../src/Delay.c:24:6:Delay_40ns	16	static
+../src/Delay.c:64:6:Delay_us	16	static
+../src/Delay.c:108:6:Delay_ms	16	static
+../src/Delay.c:138:6:Delay_sec	24	static
