@@ -13,7 +13,7 @@
 #include "SysTick.h"
 #include "clib.h"
 #include "datetime.h"
-
+#include "input.h"
 
 
 /* 曜日表示文字列 */
@@ -36,6 +36,7 @@ int main(void)
 
 	int error_no = 0;
 	int err_lcd = 0;
+	int test_led = 0;//TEST SW
 
 	unsigned int chk_10ms;
 	unsigned int past1sec = 0;
@@ -55,6 +56,32 @@ int main(void)
 		 * LCDリングバッファのデータを1つ処理する
 		 */
 		err_lcd = LCD_display();
+
+	    update_switch();
+
+	    if (clicked_LeftSW() == true) {
+	        test_led = 1;
+	    } else if (clicked_RightSW() == true) {
+	        test_led = 2;
+	    } else if (clicked_DownSW() == true) {
+	        test_led = 3;
+	    } else if (clicked_UpSW() == true) {
+	        test_led = 4;
+	    } else if (clicked_ModeSW() == true) {
+	        test_led = 5;
+	    } else if (clicked_FunctionSW() == true) {
+	        test_led = 6;
+	    } else if (clicked_AlarmSW() == true) {
+	        test_led = 7;
+	    }
+
+	    if (error_no == 0) {
+	        LED_alloff();
+
+	        if (test_led != 0) {
+	            LED_on(test_led);
+	        }
+	    }
 
 		if (err_lcd != 0) {
 			if (error_no == 0) {
@@ -183,21 +210,20 @@ static void disp_datetime(const datetime_t *datetime)
  */
 static void SYS_init(void)
 {
-	__disable_irq();
+    __disable_irq();
 
-	LED_setup();
-	tactSW_setup();
-	SysTick_init();
+    LED_setup();
+    tactSW_setup();
+    SysTick_init();
 
-	__enable_irq();
+    __enable_irq();
 
-	/*
-	 * SysTick割込みによってスイッチ状態が確定するまで待つ。
-	 */
-	while (tactSW_isfix() != true) {
-		;
-	}
+    while (tactSW_isfix() != true) {
+        ;
+    }
 
-	LCD_setup();
+    init_switch();
+
+    LCD_setup();
 }
 

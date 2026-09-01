@@ -20,6 +20,8 @@ enum {
 	   BTN_UP, //!< UP
 	   BTN_CANCEL, //!< CANCEL
 	   BTN_OK, //!< OK
+	   BTN_ENTRY,//!< ISP
+	   BTN_COUNT
 };
 
 enum { OFF, ON };
@@ -30,6 +32,7 @@ enum { OFF, ON };
 #define BIT_TACTSW_UP  ((uint32_t)1<<BP21)
 #define BIT_TACTSW_CANCEL  ((uint32_t)1<<BP22)
 #define BIT_TACTSW_OK  ((uint32_t)1<<BP23)
+#define BIT_TACTSW_ENTRY ((uint32_t)1 << BP10)
 
 extern void tactSW_setup(void);
 extern bool tactSW_isfix(void);

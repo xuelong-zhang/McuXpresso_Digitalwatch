@@ -1,3 +1,5 @@
-../src/datetime.c:15:6:init_datetime	4	static
-../src/datetime.c:33:6:update_datetime	4	static
-../src/datetime.c:60:6:get_datetime	24	static
+../src/datetime.c:19:6:init_datetime	4	static
+../src/datetime.c:36:6:update_datetime	16	static
+../src/datetime.c:99:6:get_datetime	24	static
+../src/datetime.c:110:12:get_last_day	16	static
+../src/datetime.c:148:12:is_leap_year	16	static
