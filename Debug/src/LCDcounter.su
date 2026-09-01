@@ -1,3 +1,5 @@
-../src/LCDcounter.c:34:5:main	56	static
-../src/LCDcounter.c:152:13:disp_datetime	24	static
-../src/LCDcounter.c:224:13:SYS_init	8	static
+../src/LCDcounter.c:36:5:main	88	static
+../src/LCDcounter.c:176:13:disp_datetime	24	static
+../src/LCDcounter.c:243:13:disp_stopwatch	24	static
+../src/LCDcounter.c:281:13:SYS_init	8	static
+../src/LCDcounter.c:306:13:disp_mode_screen	32	static

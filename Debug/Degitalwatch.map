@@ -204,16 +204,6 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/input.o
  .data          0x00000000        0x0 ./src/input.o
  .bss           0x00000000        0x0 ./src/input.o
- .text.clicked_ModeSW
-                0x00000000       0x10 ./src/input.o
- .text.clicked_LeftSW
-                0x00000000       0x10 ./src/input.o
- .text.clicked_RightSW
-                0x00000000       0x10 ./src/input.o
- .text.clicked_UpSW
-                0x00000000       0x10 ./src/input.o
- .text.clicked_DownSW
-                0x00000000       0x10 ./src/input.o
  .text.clicked_AlarmSW
                 0x00000000       0x10 ./src/input.o
  .debug_macro   0x00000000      0xae4 ./src/input.o
@@ -231,6 +221,20 @@ Discarded input sections
  .debug_macro   0x00000000      0xae4 ./src/mode_clock.o
  .debug_macro   0x00000000       0x22 ./src/mode_clock.o
  .debug_macro   0x00000000       0x40 ./src/mode_clock.o
+ .group         0x00000000        0xc ./src/mode_manager.o
+ .group         0x00000000        0xc ./src/mode_manager.o
+ .text          0x00000000        0x0 ./src/mode_manager.o
+ .data          0x00000000        0x0 ./src/mode_manager.o
+ .bss           0x00000000        0x0 ./src/mode_manager.o
+ .debug_macro   0x00000000      0xae4 ./src/mode_manager.o
+ .debug_macro   0x00000000       0x22 ./src/mode_manager.o
+ .group         0x00000000        0xc ./src/mode_stopwatch.o
+ .group         0x00000000        0xc ./src/mode_stopwatch.o
+ .text          0x00000000        0x0 ./src/mode_stopwatch.o
+ .data          0x00000000        0x0 ./src/mode_stopwatch.o
+ .bss           0x00000000        0x0 ./src/mode_stopwatch.o
+ .debug_macro   0x00000000      0xae4 ./src/mode_stopwatch.o
+ .debug_macro   0x00000000       0x22 ./src/mode_stopwatch.o
  .group         0x00000000        0xc ./src/tactSW.o
  .group         0x00000000        0xc ./src/tactSW.o
  .group         0x00000000        0xc ./src/tactSW.o
@@ -719,6 +723,8 @@ LOAD ./src/crp.o
 LOAD ./src/datetime.o
 LOAD ./src/input.o
 LOAD ./src/mode_clock.o
+LOAD ./src/mode_manager.o
+LOAD ./src/mode_stopwatch.o
 LOAD ./src/tactSW.o
 LOAD C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a
 START GROUP
@@ -739,7 +745,7 @@ END GROUP
                 0x20084000                        __top_RamAHB32 = 0x20084000
                 0x20084000                        __top_RAM2 = 0x20084000
 
-.text           0x00000000     0x1c20
+.text           0x00000000     0x2560
  FILL mask 0xff
                 0x00000000                        __vectors_start__ = ABSOLUTE (.)
  *(.isr_vector)
@@ -748,16 +754,16 @@ END GROUP
                 0x000000cc                        . = ALIGN (0x4)
                 0x000000cc                        __section_table_start = .
                 0x000000cc                        __data_section_table = .
-                0x000000cc        0x4 LONG 0x1c20 LOADADDR (.data)
+                0x000000cc        0x4 LONG 0x2560 LOADADDR (.data)
                 0x000000d0        0x4 LONG 0x10000000 ADDR (.data)
                 0x000000d4        0x4 LONG 0x88 SIZEOF (.data)
-                0x000000d8        0x4 LONG 0x1c20 LOADADDR (.data_RAM2)
+                0x000000d8        0x4 LONG 0x2560 LOADADDR (.data_RAM2)
                 0x000000dc        0x4 LONG 0x2007c000 ADDR (.data_RAM2)
                 0x000000e0        0x4 LONG 0x0 SIZEOF (.data_RAM2)
                 0x000000e4                        __data_section_table_end = .
                 0x000000e4                        __bss_section_table = .
                 0x000000e4        0x4 LONG 0x10000088 ADDR (.bss)
-                0x000000e8        0x4 LONG 0x1a4 SIZEOF (.bss)
+                0x000000e8        0x4 LONG 0x1b0 SIZEOF (.bss)
                 0x000000ec        0x4 LONG 0x2007c000 ADDR (.bss_RAM2)
                 0x000000f0        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
                 0x000000f4                        __bss_section_table_end = .
@@ -881,148 +887,220 @@ END GROUP
  .text.LCD_is_busy
                 0x00000cec       0x26 ./src/LCD.o
  *fill*         0x00000d12        0x2 ff
- .text.main     0x00000d14       0xd4 ./src/LCDcounter.o
+ .text.main     0x00000d14      0x1b0 ./src/LCDcounter.o
                 0x00000d14                main
  .text.disp_datetime
-                0x00000de8      0x100 ./src/LCDcounter.o
+                0x00000ec4      0x100 ./src/LCDcounter.o
+ .text.disp_stopwatch
+                0x00000fc4       0xa8 ./src/LCDcounter.o
  .text.SYS_init
-                0x00000ee8       0x36 ./src/LCDcounter.o
- *fill*         0x00000f1e        0x2 ff
+                0x0000106c       0x36 ./src/LCDcounter.o
+ *fill*         0x000010a2        0x2 ff
+ .text.disp_mode_screen
+                0x000010a4       0x80 ./src/LCDcounter.o
  .text.LED_setup
-                0x00000f20      0x15c ./src/LED.o
-                0x00000f20                LED_setup
- .text.LED_on   0x0000107c       0x3c ./src/LED.o
-                0x0000107c                LED_on
- .text.LED_off  0x000010b8       0x3c ./src/LED.o
-                0x000010b8                LED_off
+                0x00001124      0x15c ./src/LED.o
+                0x00001124                LED_setup
+ .text.LED_on   0x00001280       0x3c ./src/LED.o
+                0x00001280                LED_on
+ .text.LED_off  0x000012bc       0x3c ./src/LED.o
+                0x000012bc                LED_off
  .text.LED_alloff
-                0x000010f4       0x28 ./src/LED.o
-                0x000010f4                LED_alloff
+                0x000012f8       0x28 ./src/LED.o
+                0x000012f8                LED_alloff
  .text.get_time_10ms
-                0x0000111c       0x14 ./src/SysTick.o
-                0x0000111c                get_time_10ms
+                0x00001320       0x14 ./src/SysTick.o
+                0x00001320                get_time_10ms
  .text.SysTick_init
-                0x00001130       0x24 ./src/SysTick.o
-                0x00001130                SysTick_init
+                0x00001334       0x24 ./src/SysTick.o
+                0x00001334                SysTick_init
  .text.SysTick_Handler
-                0x00001154       0x94 ./src/SysTick.o
-                0x00001154                SysTick_Handler
- .text.myitoa   0x000011e8       0xb0 ./src/clib.o
-                0x000011e8                myitoa
- .text.reverse  0x00001298       0x5c ./src/clib.o
+                0x00001358       0x94 ./src/SysTick.o
+                0x00001358                SysTick_Handler
+ .text.myitoa   0x000013ec       0xb0 ./src/clib.o
+                0x000013ec                myitoa
+ .text.reverse  0x0000149c       0x5c ./src/clib.o
  .text.init_datetime
-                0x000012f4       0x3c ./src/datetime.o
-                0x000012f4                init_datetime
+                0x000014f8       0x3c ./src/datetime.o
+                0x000014f8                init_datetime
  .text.update_datetime
-                0x00001330       0xc8 ./src/datetime.o
-                0x00001330                update_datetime
+                0x00001534       0xc8 ./src/datetime.o
+                0x00001534                update_datetime
  .text.get_datetime
-                0x000013f8       0x30 ./src/datetime.o
-                0x000013f8                get_datetime
+                0x000015fc       0x30 ./src/datetime.o
+                0x000015fc                get_datetime
+ .text.set_datetime
+                0x0000162c       0x34 ./src/datetime.o
+                0x0000162c                set_datetime
+ .text.normalize_datetime
+                0x00001660      0x104 ./src/datetime.o
+                0x00001660                normalize_datetime
  .text.get_last_day
-                0x00001428       0x48 ./src/datetime.o
+                0x00001764       0x48 ./src/datetime.o
+                0x00001764                get_last_day
  .text.is_leap_year
-                0x00001470       0x64 ./src/datetime.o
+                0x000017ac       0x64 ./src/datetime.o
+ .text.calculate_weekday
+                0x00001810       0x90 ./src/datetime.o
  .text.init_switch
-                0x000014d4       0x44 ./src/input.o
-                0x000014d4                init_switch
+                0x000018a0       0x44 ./src/input.o
+                0x000018a0                init_switch
  .text.update_switch
-                0x00001518       0x64 ./src/input.o
-                0x00001518                update_switch
+                0x000018e4       0x64 ./src/input.o
+                0x000018e4                update_switch
  .text.get_clicked_event
-                0x0000157c       0x3c ./src/input.o
+                0x00001948       0x3c ./src/input.o
+ .text.clicked_ModeSW
+                0x00001984       0x10 ./src/input.o
+                0x00001984                clicked_ModeSW
  .text.clicked_FunctionSW
-                0x000015b8       0x10 ./src/input.o
-                0x000015b8                clicked_FunctionSW
+                0x00001994       0x10 ./src/input.o
+                0x00001994                clicked_FunctionSW
+ .text.clicked_LeftSW
+                0x000019a4       0x10 ./src/input.o
+                0x000019a4                clicked_LeftSW
+ .text.clicked_RightSW
+                0x000019b4       0x10 ./src/input.o
+                0x000019b4                clicked_RightSW
+ .text.clicked_UpSW
+                0x000019c4       0x10 ./src/input.o
+                0x000019c4                clicked_UpSW
+ .text.clicked_DownSW
+                0x000019d4       0x10 ./src/input.o
+                0x000019d4                clicked_DownSW
  .text.init_mode_clock
-                0x000015c8       0x34 ./src/mode_clock.o
-                0x000015c8                init_mode_clock
+                0x000019e4       0x48 ./src/mode_clock.o
+                0x000019e4                init_mode_clock
  .text.mode_clock
-                0x000015fc       0x9c ./src/mode_clock.o
-                0x000015fc                mode_clock
+                0x00001a2c      0x10c ./src/mode_clock.o
+                0x00001a2c                mode_clock
  .text.is_clock_setting
-                0x00001698       0x20 ./src/mode_clock.o
-                0x00001698                is_clock_setting
+                0x00001b38       0x20 ./src/mode_clock.o
+                0x00001b38                is_clock_setting
+ .text.exit_clock_setting
+                0x00001b58       0x54 ./src/mode_clock.o
+                0x00001b58                exit_clock_setting
  .text.update_clock_cursor
-                0x000016b8       0xa0 ./src/mode_clock.o
-                0x000016b8                update_clock_cursor
+                0x00001bac       0xc4 ./src/mode_clock.o
+                0x00001bac                update_clock_cursor
+ .text.restart_cursor_blink
+                0x00001c70       0x2c ./src/mode_clock.o
+ .text.move_setting_item
+                0x00001c9c       0x58 ./src/mode_clock.o
+ .text.change_setting_value
+                0x00001cf4       0xe8 ./src/mode_clock.o
+ .text.change_cyclic_value
+                0x00001ddc       0x40 ./src/mode_clock.o
+ .text.init_mode_manager
+                0x00001e1c       0x18 ./src/mode_manager.o
+                0x00001e1c                init_mode_manager
+ .text.update_mode_manager
+                0x00001e34       0x48 ./src/mode_manager.o
+                0x00001e34                update_mode_manager
+ .text.get_current_mode
+                0x00001e7c       0x14 ./src/mode_manager.o
+                0x00001e7c                get_current_mode
+ .text.init_mode_stopwatch
+                0x00001e90       0x20 ./src/mode_stopwatch.o
+                0x00001e90                init_mode_stopwatch
+ .text.mode_stopwatch
+                0x00001eb0       0x54 ./src/mode_stopwatch.o
+                0x00001eb0                mode_stopwatch
+ .text.update_stopwatch
+                0x00001f04       0x6c ./src/mode_stopwatch.o
+                0x00001f04                update_stopwatch
+ .text.get_stopwatch
+                0x00001f70       0x80 ./src/mode_stopwatch.o
+                0x00001f70                get_stopwatch
  .text.tactSW_setup
-                0x00001758       0xc0 ./src/tactSW.o
-                0x00001758                tactSW_setup
+                0x00001ff0       0xc0 ./src/tactSW.o
+                0x00001ff0                tactSW_setup
  .text.tactSW_isfix
-                0x00001818       0x20 ./src/tactSW.o
-                0x00001818                tactSW_isfix
+                0x000020b0       0x20 ./src/tactSW.o
+                0x000020b0                tactSW_isfix
  .text.tactSW_read
-                0x00001838       0x30 ./src/tactSW.o
-                0x00001838                tactSW_read
+                0x000020d0       0x30 ./src/tactSW.o
+                0x000020d0                tactSW_read
  .text.tactSW_update
-                0x00001868       0x28 ./src/tactSW.o
-                0x00001868                tactSW_update
+                0x00002100       0x28 ./src/tactSW.o
+                0x00002100                tactSW_update
  .text.tactSW_getStatus
-                0x00001890       0x50 ./src/tactSW.o
-                0x00001890                tactSW_getStatus
+                0x00002128       0x50 ./src/tactSW.o
+                0x00002128                tactSW_getStatus
  .text.SystemInit
-                0x000018e0       0xd8 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
-                0x000018e0                SystemInit
+                0x00002178       0xd8 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x00002178                SystemInit
  .text.__weak_main
-                0x000019b8        0x4 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
-                0x000019b8                __weak_main
-                0x000019b8                __main
- .text.abs      0x000019bc        0x8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
-                0x000019bc                abs
- .text.strlen   0x000019c4       0x4e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
-                0x000019c4                strlen
+                0x00002250        0x4 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+                0x00002250                __weak_main
+                0x00002250                __main
+ .text.abs      0x00002254        0x8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+                0x00002254                abs
+ .text.strlen   0x0000225c       0x4e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+                0x0000225c                strlen
  *(.rodata .rodata.* .constdata .constdata.*)
- *fill*         0x00001a12        0x2 ff
+ *fill*         0x000022aa        0x2 ff
  .rodata.LCD_locate.str1.4
-                0x00001a14       0x3e ./src/LCD.o
+                0x000022ac       0x86 ./src/LCD.o
                                   0x3 (size before relaxing)
  .rodata.str1.4
-                0x00001a52       0x1c ./src/LCDcounter.o
- *fill*         0x00001a52        0x2 ff
+                0x00002332       0x1c ./src/LCDcounter.o
+ *fill*         0x00002332        0x2 ff
  .rodata.weekday_text
-                0x00001a54       0x1c ./src/LCDcounter.o
+                0x00002334       0x1c ./src/LCDcounter.o
  .rodata.main.str1.4
-                0x00001a70        0x5 ./src/LCDcounter.o
+                0x00002350        0x5 ./src/LCDcounter.o
  .rodata.disp_datetime.str1.4
-                0x00001a70        0x5 ./src/LCDcounter.o
- .rodata.last_day_table.0
-                0x00001a70       0x30 ./src/datetime.o
+                0x00002350        0x5 ./src/LCDcounter.o
+ .rodata.disp_stopwatch.str1.4
+                0x00002350       0x25 ./src/LCDcounter.o
+ .rodata.disp_mode_screen.str1.4
+                0x00002350       0x25 ./src/LCDcounter.o
+ .rodata.last_day_table.1
+                0x00002350       0x30 ./src/datetime.o
+ .rodata.month_offset.0
+                0x00002380       0x30 ./src/datetime.o
+ .rodata.cursor_x
+                0x000023b0       0x18 ./src/mode_clock.o
+ .rodata.cursor_y
+                0x000023c8       0x18 ./src/mode_clock.o
+ .rodata.exit_clock_setting.str1.4
+                0x000023e0        0x6 ./src/mode_clock.o
  .rodata.update_clock_cursor.str1.4
-                0x00001aa0        0xe ./src/mode_clock.o
+                0x000023e0        0x6 ./src/mode_clock.o
  .rodata.__ctype
-                0x00001aa0      0x180 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
-                0x00001aa0                __ctype
-                0x00001c20                        . = ALIGN (0x4)
+                0x000023e0      0x180 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+                0x000023e0                __ctype
+                0x00002560                        . = ALIGN (0x4)
 
-.glue_7         0x00001c20        0x0
- .glue_7        0x00001c20        0x0 linker stubs
+.glue_7         0x00002560        0x0
+ .glue_7        0x00002560        0x0 linker stubs
 
-.glue_7t        0x00001c20        0x0
- .glue_7t       0x00001c20        0x0 linker stubs
+.glue_7t        0x00002560        0x0
+ .glue_7t       0x00002560        0x0 linker stubs
 
-.vfp11_veneer   0x00001c20        0x0
- .vfp11_veneer  0x00001c20        0x0 linker stubs
+.vfp11_veneer   0x00002560        0x0
+ .vfp11_veneer  0x00002560        0x0 linker stubs
 
-.v4_bx          0x00001c20        0x0
- .v4_bx         0x00001c20        0x0 linker stubs
+.v4_bx          0x00002560        0x0
+ .v4_bx         0x00002560        0x0 linker stubs
 
-.iplt           0x00001c20        0x0
- .iplt          0x00001c20        0x0 ./src/GPIO.o
+.iplt           0x00002560        0x0
+ .iplt          0x00002560        0x0 ./src/GPIO.o
 
-.rel.dyn        0x00001c20        0x0
- .rel.iplt      0x00001c20        0x0 ./src/GPIO.o
+.rel.dyn        0x00002560        0x0
+ .rel.iplt      0x00002560        0x0 ./src/GPIO.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM.exidx      0x00001c20        0x0
-                0x00001c20                        __exidx_start = .
+.ARM.exidx      0x00002560        0x0
+                0x00002560                        __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00001c20                        __exidx_end = .
-                0x00001c20                        _etext = .
+                0x00002560                        __exidx_end = .
+                0x00002560                        _etext = .
 
-.data_RAM2      0x2007c000        0x0 load address 0x00001c20
+.data_RAM2      0x2007c000        0x0 load address 0x00002560
  FILL mask 0xff
                 [!provide]                        PROVIDE (__start_data_RAM2 = .)
                 [!provide]                        PROVIDE (__start_data_RamAHB32 = .)
@@ -1043,7 +1121,7 @@ END GROUP
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _end_uninit_RESERVED = .
 
-.data           0x10000000       0x88 load address 0x00001c20
+.data           0x10000000       0x88 load address 0x00002560
  FILL mask 0xff
                 0x10000000                        _data = .
                 [!provide]                        PROVIDE (__start_data_RAM = .)
@@ -1075,7 +1153,7 @@ END GROUP
                 [!provide]                        PROVIDE (__end_data_RAM = .)
                 [!provide]                        PROVIDE (__end_data_RamLoc32 = .)
 
-.igot.plt       0x10000088        0x0 load address 0x00001ca8
+.igot.plt       0x10000088        0x0 load address 0x000025e8
  .igot.plt      0x10000088        0x0 ./src/GPIO.o
 
 .bss_RAM2       0x2007c000        0x0
@@ -1089,7 +1167,7 @@ END GROUP
                 [!provide]                        PROVIDE (__end_bss_RAM2 = .)
                 [!provide]                        PROVIDE (__end_bss_RamAHB32 = .)
 
-.bss            0x10000088      0x1a4
+.bss            0x10000088      0x1b0
                 0x10000088                        _bss = .
                 [!provide]                        PROVIDE (__start_bss_RAM = .)
                 [!provide]                        PROVIDE (__start_bss_RamLoc32 = .)
@@ -1127,21 +1205,33 @@ END GROUP
                 0x100001f4        0x7 ./src/input.o
  .bss.clock_state
                 0x100001fb        0x1 ./src/mode_clock.o
+ .bss.setting_item
+                0x100001fc        0x1 ./src/mode_clock.o
+ *fill*         0x100001fd        0x3 
  .bss.setting_datetime
-                0x100001fc       0x1c ./src/mode_clock.o
+                0x10000200       0x1c ./src/mode_clock.o
+ .bss.setting_modified
+                0x1000021c        0x1 ./src/mode_clock.o
  .bss.cursor_visible
-                0x10000218        0x1 ./src/mode_clock.o
- *fill*         0x10000219        0x3 
+                0x1000021d        0x1 ./src/mode_clock.o
+ *fill*         0x1000021e        0x2 
  .bss.cursor_last_time_10ms
-                0x1000021c        0x4 ./src/mode_clock.o
+                0x10000220        0x4 ./src/mode_clock.o
  .bss.cursor_update_required
-                0x10000220        0x1 ./src/mode_clock.o
- *fill*         0x10000221        0x3 
- .bss.tsw       0x10000224        0x4 ./src/tactSW.o
- .bss.isfix     0x10000228        0x4 ./src/tactSW.o
+                0x10000224        0x1 ./src/mode_clock.o
+ .bss.current_mode
+                0x10000225        0x1 ./src/mode_manager.o
+ *fill*         0x10000226        0x2 
+ .bss.stopwatch_time_10ms
+                0x10000228        0x4 ./src/mode_stopwatch.o
+ .bss.stopwatch_state
+                0x1000022c        0x1 ./src/mode_stopwatch.o
+ *fill*         0x1000022d        0x3 
+ .bss.tsw       0x10000230        0x4 ./src/tactSW.o
+ .bss.isfix     0x10000234        0x4 ./src/tactSW.o
  *(COMMON)
-                0x1000022c                        . = ALIGN (0x4)
-                0x1000022c                        _ebss = .
+                0x10000238                        . = ALIGN (0x4)
+                0x10000238                        _ebss = .
                 [!provide]                        PROVIDE (__end_bss_RAM = .)
                 [!provide]                        PROVIDE (__end_bss_RamLoc32 = .)
                 [!provide]                        PROVIDE (end = .)
@@ -1157,65 +1247,69 @@ END GROUP
                 [!provide]                        PROVIDE (__end_noinit_RAM2 = .)
                 [!provide]                        PROVIDE (__end_noinit_RamAHB32 = .)
 
-.noinit         0x1000022c        0x0
-                0x1000022c                        _noinit = .
+.noinit         0x10000238        0x0
+                0x10000238                        _noinit = .
                 [!provide]                        PROVIDE (__start_noinit_RAM = .)
                 [!provide]                        PROVIDE (__start_noinit_RamLoc32 = .)
  *(.noinit*)
-                0x1000022c                        . = ALIGN (0x4)
-                0x1000022c                        _end_noinit = .
+                0x10000238                        . = ALIGN (0x4)
+                0x10000238                        _end_noinit = .
                 [!provide]                        PROVIDE (__end_noinit_RAM = .)
                 [!provide]                        PROVIDE (__end_noinit_RamLoc32 = .)
-                0x1000022c                        PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
+                0x10000238                        PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
                 0x10008000                        PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
                 0xefff749e                        PROVIDE (__valid_user_code_checksum = (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
                 0x00000000                        _image_start = LOADADDR (.text)
-                0x00001ca8                        _image_end = (LOADADDR (.data) + SIZEOF (.data))
-                0x00001ca8                        _image_size = (_image_end - _image_start)
+                0x000025e8                        _image_end = (LOADADDR (.data) + SIZEOF (.data))
+                0x000025e8                        _image_size = (_image_end - _image_start)
 OUTPUT(Degitalwatch.axf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000     0x2e1c
+.debug_info     0x00000000     0x353b
  .debug_info    0x00000000       0xd7 ./src/Delay.o
  .debug_info    0x000000d7      0x2ba ./src/GPIO.o
  .debug_info    0x00000391      0x718 ./src/LCD.o
- .debug_info    0x00000aa9      0x3aa ./src/LCDcounter.o
- .debug_info    0x00000e53      0x317 ./src/LED.o
- .debug_info    0x0000116a      0x160 ./src/SysTick.o
- .debug_info    0x000012ca      0x22e ./src/clib.o
- .debug_info    0x000014f8      0x2a8 ./src/cr_startup_lpc175x_6x.o
- .debug_info    0x000017a0       0x40 ./src/crp.o
- .debug_info    0x000017e0      0x1e6 ./src/datetime.o
- .debug_info    0x000019c6      0x250 ./src/input.o
- .debug_info    0x00001c16      0x273 ./src/mode_clock.o
- .debug_info    0x00001e89      0x36e ./src/tactSW.o
- .debug_info    0x000021f7      0x347 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_info    0x0000253e       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_info    0x00002588      0x2f8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_info    0x00002880      0x4bb C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_info    0x00002d3b       0xe1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_info    0x00000aa9      0x5a0 ./src/LCDcounter.o
+ .debug_info    0x00001049      0x317 ./src/LED.o
+ .debug_info    0x00001360      0x160 ./src/SysTick.o
+ .debug_info    0x000014c0      0x22e ./src/clib.o
+ .debug_info    0x000016ee      0x2a8 ./src/cr_startup_lpc175x_6x.o
+ .debug_info    0x00001996       0x40 ./src/crp.o
+ .debug_info    0x000019d6      0x2c4 ./src/datetime.o
+ .debug_info    0x00001c9a      0x250 ./src/input.o
+ .debug_info    0x00001eea      0x46f ./src/mode_clock.o
+ .debug_info    0x00002359       0xc7 ./src/mode_manager.o
+ .debug_info    0x00002420      0x188 ./src/mode_stopwatch.o
+ .debug_info    0x000025a8      0x36e ./src/tactSW.o
+ .debug_info    0x00002916      0x347 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_info    0x00002c5d       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_info    0x00002ca7      0x2f8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_info    0x00002f9f      0x4bb C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_info    0x0000345a       0xe1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_abbrev   0x00000000     0x15d3
+.debug_abbrev   0x00000000     0x1891
  .debug_abbrev  0x00000000       0xb2 ./src/Delay.o
  .debug_abbrev  0x000000b2      0x13d ./src/GPIO.o
  .debug_abbrev  0x000001ef      0x2b4 ./src/LCD.o
- .debug_abbrev  0x000004a3      0x182 ./src/LCDcounter.o
- .debug_abbrev  0x00000625      0x10d ./src/LED.o
- .debug_abbrev  0x00000732       0xd7 ./src/SysTick.o
- .debug_abbrev  0x00000809      0x13c ./src/clib.o
- .debug_abbrev  0x00000945      0x160 ./src/cr_startup_lpc175x_6x.o
- .debug_abbrev  0x00000aa5       0x38 ./src/crp.o
- .debug_abbrev  0x00000add      0x155 ./src/datetime.o
- .debug_abbrev  0x00000c32      0x123 ./src/input.o
- .debug_abbrev  0x00000d55      0x173 ./src/mode_clock.o
- .debug_abbrev  0x00000ec8      0x196 ./src/tactSW.o
- .debug_abbrev  0x0000105e      0x10e C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_abbrev  0x0000116c       0x4f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_abbrev  0x000011bb       0xba C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_abbrev  0x00001275      0x2b7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_abbrev  0x0000152c       0xa7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_abbrev  0x000004a3      0x1be ./src/LCDcounter.o
+ .debug_abbrev  0x00000661      0x10d ./src/LED.o
+ .debug_abbrev  0x0000076e       0xd7 ./src/SysTick.o
+ .debug_abbrev  0x00000845      0x13c ./src/clib.o
+ .debug_abbrev  0x00000981      0x160 ./src/cr_startup_lpc175x_6x.o
+ .debug_abbrev  0x00000ae1       0x38 ./src/crp.o
+ .debug_abbrev  0x00000b19      0x184 ./src/datetime.o
+ .debug_abbrev  0x00000c9d      0x123 ./src/input.o
+ .debug_abbrev  0x00000dc0      0x1e4 ./src/mode_clock.o
+ .debug_abbrev  0x00000fa4       0xc5 ./src/mode_manager.o
+ .debug_abbrev  0x00001069      0x11d ./src/mode_stopwatch.o
+ .debug_abbrev  0x00001186      0x196 ./src/tactSW.o
+ .debug_abbrev  0x0000131c      0x10e C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_abbrev  0x0000142a       0x4f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_abbrev  0x00001479       0xba C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_abbrev  0x00001533      0x2b7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_abbrev  0x000017ea       0xa7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_aranges  0x00000000      0x518
+.debug_aranges  0x00000000      0x5d0
  .debug_aranges
                 0x00000000       0x38 ./src/Delay.o
  .debug_aranges
@@ -1223,56 +1317,62 @@ LOAD linker stubs
  .debug_aranges
                 0x00000078       0x98 ./src/LCD.o
  .debug_aranges
-                0x00000110       0x30 ./src/LCDcounter.o
+                0x00000110       0x40 ./src/LCDcounter.o
  .debug_aranges
-                0x00000140       0x38 ./src/LED.o
+                0x00000150       0x38 ./src/LED.o
  .debug_aranges
-                0x00000178       0x38 ./src/SysTick.o
+                0x00000188       0x38 ./src/SysTick.o
  .debug_aranges
-                0x000001b0       0x38 ./src/clib.o
+                0x000001c0       0x38 ./src/clib.o
  .debug_aranges
-                0x000001e8       0x80 ./src/cr_startup_lpc175x_6x.o
+                0x000001f8       0x80 ./src/cr_startup_lpc175x_6x.o
  .debug_aranges
-                0x00000268       0x18 ./src/crp.o
+                0x00000278       0x18 ./src/crp.o
  .debug_aranges
-                0x00000280       0x40 ./src/datetime.o
+                0x00000290       0x58 ./src/datetime.o
  .debug_aranges
-                0x000002c0       0x68 ./src/input.o
+                0x000002e8       0x68 ./src/input.o
  .debug_aranges
-                0x00000328       0x38 ./src/mode_clock.o
+                0x00000350       0x60 ./src/mode_clock.o
  .debug_aranges
-                0x00000360       0x48 ./src/tactSW.o
+                0x000003b0       0x30 ./src/mode_manager.o
  .debug_aranges
-                0x000003a8       0x28 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x000003e0       0x38 ./src/mode_stopwatch.o
  .debug_aranges
-                0x000003d0       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+                0x00000418       0x48 ./src/tactSW.o
  .debug_aranges
-                0x000003f0       0x80 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+                0x00000460       0x28 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .debug_aranges
-                0x00000470       0x88 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+                0x00000488       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .debug_aranges
-                0x000004f8       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+                0x000004a8       0x80 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_aranges
+                0x00000528       0x88 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_aranges
+                0x000005b0       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_ranges   0x00000000      0x420
+.debug_ranges   0x00000000      0x4b8
  .debug_ranges  0x00000000       0x28 ./src/Delay.o
  .debug_ranges  0x00000028       0x60 ./src/GPIO.o
  .debug_ranges  0x00000088       0x88 ./src/LCD.o
- .debug_ranges  0x00000110       0x20 ./src/LCDcounter.o
- .debug_ranges  0x00000130       0x28 ./src/LED.o
- .debug_ranges  0x00000158       0x28 ./src/SysTick.o
- .debug_ranges  0x00000180       0x28 ./src/clib.o
- .debug_ranges  0x000001a8       0x70 ./src/cr_startup_lpc175x_6x.o
- .debug_ranges  0x00000218       0x30 ./src/datetime.o
- .debug_ranges  0x00000248       0x58 ./src/input.o
- .debug_ranges  0x000002a0       0x28 ./src/mode_clock.o
- .debug_ranges  0x000002c8       0x38 ./src/tactSW.o
- .debug_ranges  0x00000300       0x18 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_ranges  0x00000318       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_ranges  0x00000328       0x70 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_ranges  0x00000398       0x78 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_ranges  0x00000410       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_ranges  0x00000110       0x30 ./src/LCDcounter.o
+ .debug_ranges  0x00000140       0x28 ./src/LED.o
+ .debug_ranges  0x00000168       0x28 ./src/SysTick.o
+ .debug_ranges  0x00000190       0x28 ./src/clib.o
+ .debug_ranges  0x000001b8       0x70 ./src/cr_startup_lpc175x_6x.o
+ .debug_ranges  0x00000228       0x48 ./src/datetime.o
+ .debug_ranges  0x00000270       0x58 ./src/input.o
+ .debug_ranges  0x000002c8       0x50 ./src/mode_clock.o
+ .debug_ranges  0x00000318       0x20 ./src/mode_manager.o
+ .debug_ranges  0x00000338       0x28 ./src/mode_stopwatch.o
+ .debug_ranges  0x00000360       0x38 ./src/tactSW.o
+ .debug_ranges  0x00000398       0x18 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_ranges  0x000003b0       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_ranges  0x000003c0       0x70 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_ranges  0x00000430       0x78 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_ranges  0x000004a8       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_macro    0x00000000     0x363a
+.debug_macro    0x00000000     0x36bc
  .debug_macro   0x00000000       0x1b ./src/Delay.o
  .debug_macro   0x0000001b      0xae4 ./src/Delay.o
  .debug_macro   0x00000aff       0x63 ./src/GPIO.o
@@ -1293,62 +1393,68 @@ LOAD linker stubs
  .debug_macro   0x000024ff       0x70 ./src/LCD.o
  .debug_macro   0x0000256f       0x16 ./src/LCD.o
  .debug_macro   0x00002585       0x40 ./src/LCD.o
- .debug_macro   0x000025c5       0xe3 ./src/LCDcounter.o
- .debug_macro   0x000026a8       0x2e ./src/LCDcounter.o
- .debug_macro   0x000026d6       0x71 ./src/LED.o
- .debug_macro   0x00002747       0x98 ./src/SysTick.o
- .debug_macro   0x000027df       0x6d ./src/clib.o
- .debug_macro   0x0000284c       0x22 ./src/clib.o
- .debug_macro   0x0000286e       0x1d ./src/cr_startup_lpc175x_6x.o
- .debug_macro   0x0000288b       0x1a ./src/crp.o
- .debug_macro   0x000028a5       0x34 ./src/crp.o
- .debug_macro   0x000028d9       0x1b ./src/datetime.o
- .debug_macro   0x000028f4       0x68 ./src/input.o
- .debug_macro   0x0000295c       0x5d ./src/mode_clock.o
- .debug_macro   0x000029b9       0x76 ./src/tactSW.o
- .debug_macro   0x00002a2f      0x12d C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00002b5c      0xade C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x000025c5       0xf7 ./src/LCDcounter.o
+ .debug_macro   0x000026bc       0x2e ./src/LCDcounter.o
+ .debug_macro   0x000026ea       0x71 ./src/LED.o
+ .debug_macro   0x0000275b       0x98 ./src/SysTick.o
+ .debug_macro   0x000027f3       0x6d ./src/clib.o
+ .debug_macro   0x00002860       0x22 ./src/clib.o
+ .debug_macro   0x00002882       0x1d ./src/cr_startup_lpc175x_6x.o
+ .debug_macro   0x0000289f       0x1a ./src/crp.o
+ .debug_macro   0x000028b9       0x34 ./src/crp.o
+ .debug_macro   0x000028ed       0x27 ./src/datetime.o
+ .debug_macro   0x00002914       0x68 ./src/input.o
+ .debug_macro   0x0000297c       0x5d ./src/mode_clock.o
+ .debug_macro   0x000029d9       0x2e ./src/mode_manager.o
+ .debug_macro   0x00002a07       0x34 ./src/mode_stopwatch.o
+ .debug_macro   0x00002a3b       0x76 ./src/tactSW.o
+ .debug_macro   0x00002ab1      0x12d C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00002bde      0xade C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
 
-.debug_line     0x00000000     0x2f74
+.debug_line     0x00000000     0x3661
  .debug_line    0x00000000      0x100 ./src/Delay.o
  .debug_line    0x00000100      0x2c5 ./src/GPIO.o
  .debug_line    0x000003c5      0x7b9 ./src/LCD.o
- .debug_line    0x00000b7e      0x42b ./src/LCDcounter.o
- .debug_line    0x00000fa9      0x2c1 ./src/LED.o
- .debug_line    0x0000126a      0x276 ./src/SysTick.o
- .debug_line    0x000014e0      0x307 ./src/clib.o
- .debug_line    0x000017e7      0x11e ./src/cr_startup_lpc175x_6x.o
- .debug_line    0x00001905       0xae ./src/crp.o
- .debug_line    0x000019b3      0x1c2 ./src/datetime.o
- .debug_line    0x00001b75      0x324 ./src/input.o
- .debug_line    0x00001e99      0x226 ./src/mode_clock.o
- .debug_line    0x000020bf      0x2fc ./src/tactSW.o
- .debug_line    0x000023bb      0x485 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_line    0x00002840       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_line    0x0000288a      0x202 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_line    0x00002a8c      0x3a7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_line    0x00002e33      0x141 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_line    0x00000b7e      0x53e ./src/LCDcounter.o
+ .debug_line    0x000010bc      0x2c1 ./src/LED.o
+ .debug_line    0x0000137d      0x276 ./src/SysTick.o
+ .debug_line    0x000015f3      0x307 ./src/clib.o
+ .debug_line    0x000018fa      0x11e ./src/cr_startup_lpc175x_6x.o
+ .debug_line    0x00001a18       0xae ./src/crp.o
+ .debug_line    0x00001ac6      0x2b2 ./src/datetime.o
+ .debug_line    0x00001d78      0x324 ./src/input.o
+ .debug_line    0x0000209c      0x395 ./src/mode_clock.o
+ .debug_line    0x00002431      0x18d ./src/mode_manager.o
+ .debug_line    0x000025be      0x1ee ./src/mode_stopwatch.o
+ .debug_line    0x000027ac      0x2fc ./src/tactSW.o
+ .debug_line    0x00002aa8      0x485 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x00002f2d       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_line    0x00002f77      0x202 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_line    0x00003179      0x3a7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_line    0x00003520      0x141 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_str      0x00000000     0xc50f
- .debug_str     0x00000000     0xc50f ./src/Delay.o
+.debug_str      0x00000000     0xc8e3
+ .debug_str     0x00000000     0xc8e3 ./src/Delay.o
                                0x2edb (size before relaxing)
- .debug_str     0x0000c50f     0x4d4a ./src/GPIO.o
- .debug_str     0x0000c50f     0xab04 ./src/LCD.o
- .debug_str     0x0000c50f     0xa334 ./src/LCDcounter.o
- .debug_str     0x0000c50f     0x4f70 ./src/LED.o
- .debug_str     0x0000c50f     0x482f ./src/SysTick.o
- .debug_str     0x0000c50f     0x4656 ./src/clib.o
- .debug_str     0x0000c50f     0x3096 ./src/cr_startup_lpc175x_6x.o
- .debug_str     0x0000c50f     0x2f7f ./src/crp.o
- .debug_str     0x0000c50f     0x2faa ./src/datetime.o
- .debug_str     0x0000c50f     0x47eb ./src/input.o
- .debug_str     0x0000c50f     0x3219 ./src/mode_clock.o
- .debug_str     0x0000c50f     0x4bab ./src/tactSW.o
- .debug_str     0x0000c50f     0xa2d4 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_str     0x0000c50f      0x126 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_str     0x0000c50f      0x1c1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_str     0x0000c50f      0x277 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_str     0x0000c50f      0x17a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_str     0x0000c8e3     0x4d4a ./src/GPIO.o
+ .debug_str     0x0000c8e3     0xab04 ./src/LCD.o
+ .debug_str     0x0000c8e3     0xa4ee ./src/LCDcounter.o
+ .debug_str     0x0000c8e3     0x4f70 ./src/LED.o
+ .debug_str     0x0000c8e3     0x482f ./src/SysTick.o
+ .debug_str     0x0000c8e3     0x4656 ./src/clib.o
+ .debug_str     0x0000c8e3     0x3096 ./src/cr_startup_lpc175x_6x.o
+ .debug_str     0x0000c8e3     0x2f7f ./src/crp.o
+ .debug_str     0x0000c8e3     0x3032 ./src/datetime.o
+ .debug_str     0x0000c8e3     0x47eb ./src/input.o
+ .debug_str     0x0000c8e3     0x33dd ./src/mode_clock.o
+ .debug_str     0x0000c8e3     0x2fa5 ./src/mode_manager.o
+ .debug_str     0x0000c8e3     0x305f ./src/mode_stopwatch.o
+ .debug_str     0x0000c8e3     0x4bab ./src/tactSW.o
+ .debug_str     0x0000c8e3     0xa2d4 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x0000c8e3      0x126 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_str     0x0000c8e3      0x1c1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_str     0x0000c8e3      0x277 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_str     0x0000c8e3      0x17a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
 .comment        0x00000000       0x45
  .comment       0x00000000       0x45 ./src/Delay.o
@@ -1364,6 +1470,8 @@ LOAD linker stubs
  .comment       0x00000045       0x46 ./src/datetime.o
  .comment       0x00000045       0x46 ./src/input.o
  .comment       0x00000045       0x46 ./src/mode_clock.o
+ .comment       0x00000045       0x46 ./src/mode_manager.o
+ .comment       0x00000045       0x46 ./src/mode_stopwatch.o
  .comment       0x00000045       0x46 ./src/tactSW.o
  .comment       0x00000045       0x46 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .comment       0x00000045       0x46 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
@@ -1398,36 +1506,42 @@ LOAD linker stubs
  .ARM.attributes
                 0x000001ef       0x2d ./src/mode_clock.o
  .ARM.attributes
-                0x0000021c       0x2d ./src/tactSW.o
+                0x0000021c       0x2d ./src/mode_manager.o
  .ARM.attributes
-                0x00000249       0x2d C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x00000249       0x2d ./src/mode_stopwatch.o
  .ARM.attributes
-                0x00000276       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+                0x00000276       0x2d ./src/tactSW.o
  .ARM.attributes
-                0x000002a3       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+                0x000002a3       0x2d C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .ARM.attributes
-                0x000002d0       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+                0x000002d0       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .ARM.attributes
-                0x000002fd       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+                0x000002fd       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .ARM.attributes
+                0x0000032a       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .ARM.attributes
+                0x00000357       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_frame    0x00000000      0xda0
+.debug_frame    0x00000000     0x100c
  .debug_frame   0x00000000       0xac ./src/Delay.o
  .debug_frame   0x000000ac       0xd8 ./src/GPIO.o
  .debug_frame   0x00000184      0x244 ./src/LCD.o
- .debug_frame   0x000003c8       0x70 ./src/LCDcounter.o
- .debug_frame   0x00000438       0x98 ./src/LED.o
- .debug_frame   0x000004d0       0x8c ./src/SysTick.o
- .debug_frame   0x0000055c       0xa4 ./src/clib.o
- .debug_frame   0x00000600      0x170 ./src/cr_startup_lpc175x_6x.o
- .debug_frame   0x00000770       0xc8 ./src/datetime.o
- .debug_frame   0x00000838      0x144 ./src/input.o
- .debug_frame   0x0000097c       0x98 ./src/mode_clock.o
- .debug_frame   0x00000a14       0xe8 ./src/tactSW.o
- .debug_frame   0x00000afc       0x38 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_frame   0x00000b34       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_frame   0x00000b54       0xe0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_frame   0x00000c34      0x144 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_frame   0x00000d78       0x28 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_frame   0x000003c8       0xb8 ./src/LCDcounter.o
+ .debug_frame   0x00000480       0x98 ./src/LED.o
+ .debug_frame   0x00000518       0x8c ./src/SysTick.o
+ .debug_frame   0x000005a4       0xa4 ./src/clib.o
+ .debug_frame   0x00000648      0x170 ./src/cr_startup_lpc175x_6x.o
+ .debug_frame   0x000007b8      0x13c ./src/datetime.o
+ .debug_frame   0x000008f4      0x144 ./src/input.o
+ .debug_frame   0x00000a38      0x140 ./src/mode_clock.o
+ .debug_frame   0x00000b78       0x6c ./src/mode_manager.o
+ .debug_frame   0x00000be4       0x9c ./src/mode_stopwatch.o
+ .debug_frame   0x00000c80       0xe8 ./src/tactSW.o
+ .debug_frame   0x00000d68       0x38 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_frame   0x00000da0       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_frame   0x00000dc0       0xe0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_frame   0x00000ea0      0x144 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_frame   0x00000fe4       0x28 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
 .debug_loc      0x00000000      0x5ee
  .debug_loc     0x00000000      0x22f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)

@@ -1,5 +1,8 @@
-../src/datetime.c:19:6:init_datetime	4	static
+../src/datetime.c:22:6:init_datetime	4	static
 ../src/datetime.c:36:6:update_datetime	16	static
-../src/datetime.c:99:6:get_datetime	24	static
-../src/datetime.c:110:12:get_last_day	16	static
-../src/datetime.c:148:12:is_leap_year	16	static
+../src/datetime.c:82:6:get_datetime	24	static
+../src/datetime.c:92:6:set_datetime	24	static
+../src/datetime.c:103:6:normalize_datetime	24	static
+../src/datetime.c:159:5:get_last_day	16	static
+../src/datetime.c:180:12:is_leap_year	16	static
+../src/datetime.c:200:18:calculate_weekday	32	static

@@ -6,7 +6,7 @@
  * Generated linker script file for LPC1763
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v25.6 [Build 136] [2025-06-27] on 2026/09/01 16:23:22
+ * MCUXpresso IDE v25.6 [Build 136] [2025-06-27] on 2026/09/01 21:42:44
  */
 
 INCLUDE "Degitalwatch_Debug_library.ld"
