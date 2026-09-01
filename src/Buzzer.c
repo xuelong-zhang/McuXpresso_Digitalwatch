@@ -15,20 +15,20 @@
 #define BUZZER_BIT   (BP28)
 
 /* 現在のブザー出力状態 */
-static bool buzzer_output_high;
+static volatile bool buzzer_output_high;
 
 /**
  * ブザー端子をGPIO出力として初期化する。
  */
 void Buzzer_setup(void)
 {
-    /* P4.28をGPIO機能に設定する。 */
+    /* P4.28をGPIO機能に設定する */
     PINSEL9 &= ~(3U << BP24);
 
-    GPIO_setDir(BUZZER_PORT, BUZZER_BIT, OUTDIRECTION);
-
+    /* 出力方向へ変更する前にLOWを設定する */
     buzzer_output_high = false;
     GPIO_setValueBit(BUZZER_PORT, BUZZER_BIT, LOW);
+    GPIO_setDir(BUZZER_PORT, BUZZER_BIT, OUTDIRECTION);
 }
 
 /**

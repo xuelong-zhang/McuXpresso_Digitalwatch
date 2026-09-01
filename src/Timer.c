@@ -38,6 +38,9 @@
 static unsigned int get_timer0_pclk(void);
 static unsigned int get_prescaler_for_1us(void);
 
+/* Timer0の動作状態 */
+static volatile uint32_t timer0_running = 0U;
+
 /**
  * Timer0を1マイクロ秒単位で計数できるよう初期化する。
  */
@@ -61,10 +64,17 @@ void Timer_init(void)
     /* 保留中のTimer0割込み要因を消去する。 */
     T0IR = 0xFFU;
     NVIC_ClearPendingIRQ(TIMER0_IRQn);
-    NVIC_EnableIRQ(TIMER0_IRQn);
+    //NVIC_EnableIRQ(TIMER0_IRQn);
 
-    /* 初期状態ではTimer0を停止する。 */
+    /* 初期状態ではTimer0割込みを無効にする */
+    T0MCR = 0U;
     T0TCR = 0U;
+    T0IR = 0xFFU;
+
+    NVIC_DisableIRQ(TIMER0_IRQn);
+    NVIC_ClearPendingIRQ(TIMER0_IRQn);
+
+    timer0_running = 0U;
     Buzzer_off();
 }
 
@@ -73,21 +83,36 @@ void Timer_init(void)
  */
 void Timer_start(unsigned int interval_us)
 {
-    if (interval_us == 0U) {
-        return;
-    }
+	 if (interval_us == 0U) {
+	        return;
+	    }
 
-    /* カウンタを停止して0へ戻してから周期を設定する。 */
-    T0TCR = TIMER_COUNTER_RESET;
-    T0TC = 0U;
-    T0PC = 0U;
-    T0MR0 = interval_us;
-    T0IR = 0xFFU;
+	    /* 設定中の割込みを禁止する */
+	    NVIC_DisableIRQ(TIMER0_IRQn);
+	    timer0_running = 0U;
 
-    Buzzer_off();
+	    /* カウンタを停止してリセットする */
+	    T0TCR = TIMER_COUNTER_RESET;
+	    T0TC = 0U;
+	    T0PC = 0U;
+	    T0MR0 = interval_us;
 
-    /* Timer0の計数を開始する。 */
-    T0TCR = TIMER_COUNTER_ENABLE;
+	    /* MR0一致時に割込みを発生させる */
+	    T0MCR = TIMER_MATCH0_INTERRUPT |
+	            TIMER_MATCH0_RESET;
+
+	    /* 残っている割込み要求を消去する */
+	    T0IR = 0xFFU;
+	    NVIC_ClearPendingIRQ(TIMER0_IRQn);
+
+	    /* 開始時の出力をLOWに統一する */
+	    Buzzer_off();
+
+	    timer0_running = 1U;
+	    NVIC_EnableIRQ(TIMER0_IRQn);
+
+	    /* Timer0を開始する */
+	    T0TCR = TIMER_COUNTER_ENABLE;
 }
 
 /**
@@ -95,11 +120,24 @@ void Timer_start(unsigned int interval_us)
  */
 void Timer_stop(void)
 {
-    T0TCR = 0U;
+    /* 最初にTimer0割込みを禁止する */
+    NVIC_DisableIRQ(TIMER0_IRQn);
+    timer0_running = 0U;
+
+    /* 一致割込みとカウンタを停止する */
+    T0MCR = 0U;
+    T0TCR = TIMER_COUNTER_RESET;
     T0TC = 0U;
     T0PC = 0U;
+
+    /* 周辺回路とNVICの保留中割込みを消去する */
     T0IR = 0xFFU;
+    NVIC_ClearPendingIRQ(TIMER0_IRQn);
+
+    /* ブザー端子を確実にLOWへ固定する */
     Buzzer_off();
+
+    T0TCR = 0U;
 }
 
 /**
@@ -108,9 +146,15 @@ void Timer_stop(void)
 void TIMER0_IRQHandler(void)
 {
     if ((T0IR & TIMER_MATCH0_FLAG) != 0U) {
-        /* MR0一致割込み要因を消去する。 */
+        /* MR0一致割込み要因を消去する */
         T0IR = TIMER_MATCH0_FLAG;
-        Buzzer_toggle();
+
+        if (timer0_running != 0U) {
+            Buzzer_toggle();
+        } else {
+            /* 停止中は必ずLOWへ戻す */
+            Buzzer_off();
+        }
     }
 }
 
