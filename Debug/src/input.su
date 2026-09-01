@@ -1,0 +1,10 @@
+../src/input.c:26:6:init_switch	16	static
+../src/input.c:41:6:update_switch	16	static
+../src/input.c:67:13:get_clicked_event	24	static
+../src/input.c:81:6:clicked_ModeSW	8	static
+../src/input.c:87:6:clicked_FunctionSW	8	static
+../src/input.c:93:6:clicked_LeftSW	8	static
+../src/input.c:99:6:clicked_RightSW	8	static
+../src/input.c:105:6:clicked_UpSW	8	static
+../src/input.c:111:6:clicked_DownSW	8	static
+../src/input.c:117:6:clicked_AlarmSW	8	static
