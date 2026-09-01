@@ -1,0 +1,3 @@
+../src/datetime.c:15:6:init_datetime	4	static
+../src/datetime.c:33:6:update_datetime	4	static
+../src/datetime.c:60:6:get_datetime	24	static

@@ -1,6 +1,6 @@
 Archive member included to satisfy reference by file (symbol)
 
-C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
                               ./src/cr_startup_lpc175x_6x.o (SystemInit)
 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
                               ./src/cr_startup_lpc175x_6x.o (__main)
@@ -213,30 +213,30 @@ Discarded input sections
  .debug_macro   0x00000000       0x10 ./src/tactSW.o
  .debug_macro   0x00000000       0x22 ./src/tactSW.o
  .debug_macro   0x00000000       0x28 ./src/tactSW.o
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .group         0x00000000        0xc C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .text          0x00000000        0x0 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .data          0x00000000        0x0 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .bss           0x00000000        0x0 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .group         0x00000000        0xc C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .text          0x00000000        0x0 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .data          0x00000000        0x0 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .bss           0x00000000        0x0 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .text.SystemCoreClockUpdate
-                0x00000000       0xb8 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x00000000       0xb8 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .data.SystemCoreClock
-                0x00000000        0x4 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00000000       0x10 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00000000      0x12e C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00000000      0x5b3 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00000000       0x1c C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00000000       0x3a C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00000000       0x2d C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00000000      0xbb1 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00000000      0x2c7 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x00000000        0x4 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00000000       0x10 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00000000      0x12e C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00000000      0x5b3 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00000000       0x1c C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00000000       0x3a C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00000000       0x2d C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00000000      0xbb1 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00000000      0x2c7 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .text          0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .data          0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .bss           0x00000000        0x0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
@@ -678,7 +678,7 @@ LOAD ./src/clib.o
 LOAD ./src/cr_startup_lpc175x_6x.o
 LOAD ./src/crp.o
 LOAD ./src/tactSW.o
-LOAD C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a
+LOAD C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a
 START GROUP
 LOAD C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a
 LOAD C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp\libcr_eabihelpers.a
@@ -881,7 +881,7 @@ END GROUP
                 0x000012f4       0x50 ./src/tactSW.o
                 0x000012f4                tactSW_getStatus
  .text.SystemInit
-                0x00001344       0xd8 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x00001344       0xd8 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
                 0x00001344                SystemInit
  .text.__weak_main
                 0x0000141c        0x4 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
@@ -1073,7 +1073,7 @@ LOAD linker stubs
  .debug_info    0x00001420      0x2a8 ./src/cr_startup_lpc175x_6x.o
  .debug_info    0x000016c8       0x40 ./src/crp.o
  .debug_info    0x00001708      0x334 ./src/tactSW.o
- .debug_info    0x00001a3c      0x347 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_info    0x00001a3c      0x347 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .debug_info    0x00001d83       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .debug_info    0x00001dcd      0x2f8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
  .debug_info    0x000020c5      0x4bb C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
@@ -1090,7 +1090,7 @@ LOAD linker stubs
  .debug_abbrev  0x00000921      0x160 ./src/cr_startup_lpc175x_6x.o
  .debug_abbrev  0x00000a81       0x38 ./src/crp.o
  .debug_abbrev  0x00000ab9      0x194 ./src/tactSW.o
- .debug_abbrev  0x00000c4d      0x10e C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_abbrev  0x00000c4d      0x10e C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .debug_abbrev  0x00000d5b       0x4f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .debug_abbrev  0x00000daa       0xba C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
  .debug_abbrev  0x00000e64      0x2b7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
@@ -1118,7 +1118,7 @@ LOAD linker stubs
  .debug_aranges
                 0x00000278       0x48 ./src/tactSW.o
  .debug_aranges
-                0x000002c0       0x28 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x000002c0       0x28 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .debug_aranges
                 0x000002e8       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .debug_aranges
@@ -1138,7 +1138,7 @@ LOAD linker stubs
  .debug_ranges  0x00000178       0x28 ./src/clib.o
  .debug_ranges  0x000001a0       0x70 ./src/cr_startup_lpc175x_6x.o
  .debug_ranges  0x00000210       0x38 ./src/tactSW.o
- .debug_ranges  0x00000248       0x18 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_ranges  0x00000248       0x18 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .debug_ranges  0x00000260       0x10 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .debug_ranges  0x00000270       0x70 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
  .debug_ranges  0x000002e0       0x78 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
@@ -1175,43 +1175,43 @@ LOAD linker stubs
  .debug_macro   0x00002876       0x1a ./src/crp.o
  .debug_macro   0x00002890       0x34 ./src/crp.o
  .debug_macro   0x000028c4       0x7c ./src/tactSW.o
- .debug_macro   0x00002940      0x12d C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00002a6d      0xade C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00002940      0x12d C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x00002a6d      0xade C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
 
-.debug_line     0x00000000     0x281e
- .debug_line    0x00000000      0x115 ./src/Delay.o
- .debug_line    0x00000115      0x2da ./src/GPIO.o
- .debug_line    0x000003ef      0x7b8 ./src/LCD.o
- .debug_line    0x00000ba7      0x3a9 ./src/LCDcounter.o
- .debug_line    0x00000f50      0x2d6 ./src/LED.o
- .debug_line    0x00001226      0x28b ./src/SysTick.o
- .debug_line    0x000014b1      0x31c ./src/clib.o
- .debug_line    0x000017cd      0x11e ./src/cr_startup_lpc175x_6x.o
- .debug_line    0x000018eb       0xae ./src/crp.o
- .debug_line    0x00001999      0x2e2 ./src/tactSW.o
- .debug_line    0x00001c7b      0x46f C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_line    0x000020ea       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_line    0x00002134      0x202 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_line    0x00002336      0x3a7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_line    0x000026dd      0x141 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+.debug_line     0x00000000     0x2910
+ .debug_line    0x00000000      0x12b ./src/Delay.o
+ .debug_line    0x0000012b      0x2f0 ./src/GPIO.o
+ .debug_line    0x0000041b      0x7e4 ./src/LCD.o
+ .debug_line    0x00000bff      0x3d5 ./src/LCDcounter.o
+ .debug_line    0x00000fd4      0x2ec ./src/LED.o
+ .debug_line    0x000012c0      0x2a1 ./src/SysTick.o
+ .debug_line    0x00001561      0x332 ./src/clib.o
+ .debug_line    0x00001893      0x11e ./src/cr_startup_lpc175x_6x.o
+ .debug_line    0x000019b1       0xae ./src/crp.o
+ .debug_line    0x00001a5f      0x2f8 ./src/tactSW.o
+ .debug_line    0x00001d57      0x485 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x000021dc       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_line    0x00002226      0x202 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_line    0x00002428      0x3a7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_line    0x000027cf      0x141 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_str      0x00000000     0xc1d6
- .debug_str     0x00000000     0xc1d6 ./src/Delay.o
-                               0x2ef0 (size before relaxing)
- .debug_str     0x0000c1d6     0x4d5f ./src/GPIO.o
- .debug_str     0x0000c1d6     0xab19 ./src/LCD.o
- .debug_str     0x0000c1d6     0xa28d ./src/LCDcounter.o
- .debug_str     0x0000c1d6     0x4f85 ./src/LED.o
- .debug_str     0x0000c1d6     0x481d ./src/SysTick.o
- .debug_str     0x0000c1d6     0x466b ./src/clib.o
- .debug_str     0x0000c1d6     0x30ab ./src/cr_startup_lpc175x_6x.o
- .debug_str     0x0000c1d6     0x2f94 ./src/crp.o
- .debug_str     0x0000c1d6     0x4b85 ./src/tactSW.o
- .debug_str     0x0000c1d6     0xa2be C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_str     0x0000c1d6      0x126 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_str     0x0000c1d6      0x1c1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_str     0x0000c1d6      0x277 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_str     0x0000c1d6      0x17a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+.debug_str      0x00000000     0xc202
+ .debug_str     0x00000000     0xc202 ./src/Delay.o
+                               0x2f06 (size before relaxing)
+ .debug_str     0x0000c202     0x4d75 ./src/GPIO.o
+ .debug_str     0x0000c202     0xab2f ./src/LCD.o
+ .debug_str     0x0000c202     0xa2a3 ./src/LCDcounter.o
+ .debug_str     0x0000c202     0x4f9b ./src/LED.o
+ .debug_str     0x0000c202     0x4833 ./src/SysTick.o
+ .debug_str     0x0000c202     0x4681 ./src/clib.o
+ .debug_str     0x0000c202     0x30c1 ./src/cr_startup_lpc175x_6x.o
+ .debug_str     0x0000c202     0x2faa ./src/crp.o
+ .debug_str     0x0000c202     0x4b9b ./src/tactSW.o
+ .debug_str     0x0000c202     0xa2d4 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x0000c202      0x126 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_str     0x0000c202      0x1c1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_str     0x0000c202      0x277 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_str     0x0000c202      0x17a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
 .comment        0x00000000       0x45
  .comment       0x00000000       0x45 ./src/Delay.o
@@ -1225,7 +1225,7 @@ LOAD linker stubs
  .comment       0x00000045       0x46 ./src/cr_startup_lpc175x_6x.o
  .comment       0x00000045       0x46 ./src/crp.o
  .comment       0x00000045       0x46 ./src/tactSW.o
- .comment       0x00000045       0x46 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .comment       0x00000045       0x46 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .comment       0x00000045       0x46 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .comment       0x00000045       0x46 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
  .comment       0x00000045       0x46 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
@@ -1254,7 +1254,7 @@ LOAD linker stubs
  .ARM.attributes
                 0x00000195       0x2d ./src/tactSW.o
  .ARM.attributes
-                0x000001c2       0x2d C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x000001c2       0x2d C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .ARM.attributes
                 0x000001ef       0x2d C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .ARM.attributes
@@ -1274,7 +1274,7 @@ LOAD linker stubs
  .debug_frame   0x00000538       0xa4 ./src/clib.o
  .debug_frame   0x000005dc      0x170 ./src/cr_startup_lpc175x_6x.o
  .debug_frame   0x0000074c       0xe0 ./src/tactSW.o
- .debug_frame   0x0000082c       0x38 C:\Users\4076383\Documents\MCUXpressoIDE_25.6.136\20260220GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_frame   0x0000082c       0x38 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .debug_frame   0x00000864       0x20 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
  .debug_frame   0x00000884       0xe0 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
  .debug_frame   0x00000964      0x144 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
