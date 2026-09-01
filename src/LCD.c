@@ -271,10 +271,10 @@ static bool esc_op(int c)
 			break;
 		case Esc_cur_dsp_on_off:
 			if (c == (int)'l') {				/* Cursor ON */
-				LCD_write_byte(LCDRS_INST, LCD_DSP | LCD_DSP_ON | LCD_DSP_CUR_ON| LCD_DSP_BLINK);
+				LCD_write_byte(LCDRS_INST, LCD_DSP | LCD_DSP_ON | LCD_DSP_CUR_ON | LCD_DSP_NOBLINK);
 				is_esc = false;			/* end of ESC sequence */
 			} else if (c == (int)'h') {		/* Cursor OFF */
-				LCD_write_byte(LCDRS_INST, LCD_DSP | LCD_DSP_ON | LCD_DSP_CUR_OFF);
+				LCD_write_byte(LCDRS_INST, LCD_DSP | LCD_DSP_ON | LCD_DSP_CUR_OFF | LCD_DSP_NOBLINK);
 				is_esc = false;			/* end of ESC sequence */
 			} else {
 				err_lcd = ERR_ESC;

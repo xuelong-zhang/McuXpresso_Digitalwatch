@@ -63,8 +63,9 @@ int main(void)
 
 	    if (mode_clock(&display_datetime) == true) {
 	        disp_datetime(&display_datetime);
-	        update_clock_cursor();
+
 	    }
+	    update_clock_cursor();
 
 	    /*Sw test*/
 //	    if (clicked_LeftSW() == true) {
@@ -125,8 +126,10 @@ int main(void)
 			if (past1sec >= 100) {
 			    past1sec = 0;
 
+			    update_datetime();
+
 			    if (is_clock_setting() == false) {
-			        update_datetime();
+
 			        get_datetime(&display_datetime);
 			        disp_datetime(&display_datetime);
 			    }

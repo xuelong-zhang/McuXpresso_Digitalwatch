@@ -1,15 +1,23 @@
-/**
- * @file mode_clock.c
+
+ /* @file mode_clock.c
  * @brief デジタル時計 時計モード処理
  *
  * 第1段階：
- * 変更切替スイッチ（OK／SW1）による日時設定状態への
- * 進入・終了と、LCDカーソルの表示を実装する。
+ * 変更切替スイッチ（CANCEL／SW_CENTER）による日時設定状態への
+ * 進入・終了と、500ms周期の下線カーソル点滅を実装する。
  */
 
 #include "mode_clock.h"
 #include "input.h"
 #include "LCD.h"
+#include "SysTick.h"
+
+/* 10ms割込み50回 = 500ms */
+#define CURSOR_BLINK_TIME_10MS  (50U)
+
+/* 秒の1の位（2行目12桁目） */
+#define CURSOR_SECOND_X         (12)
+#define CURSOR_SECOND_Y         (2)
 
 /* 時計モード内部状態 */
 typedef enum {
@@ -23,12 +31,24 @@ static clock_state_t clock_state;
 /* 設定画面に表示する日付時刻 */
 static datetime_t setting_datetime;
 
+/* カーソル表示状態 */
+static bool cursor_visible;
+
+/* 最後にカーソル表示を切り替えた10ms時刻 */
+static unsigned int cursor_last_time_10ms;
+
+/* LCDへカーソル状態を反映する必要があるか */
+static bool cursor_update_required;
+
 /**
  * 時計モードを通常表示状態で初期化する。
  */
 void init_mode_clock(void)
 {
     clock_state = CLOCK_DISPLAY_STATE;
+    cursor_visible = false;
+    cursor_last_time_10ms = get_time_10ms();
+    cursor_update_required = true;
 }
 
 /**
@@ -48,10 +68,19 @@ bool mode_clock(datetime_t *display_datetime)
             get_datetime(&setting_datetime);
             *display_datetime = setting_datetime;
             clock_state = CLOCK_SETTING_STATE;
+
+            /* 設定開始時はカーソルを直ちに表示する。 */
+            cursor_visible = true;
+            cursor_last_time_10ms = get_time_10ms();
+            cursor_update_required = true;
         } else {
             /* 第1段階では値を変更しないため、そのまま通常表示へ戻る。 */
             get_datetime(display_datetime);
             clock_state = CLOCK_DISPLAY_STATE;
+
+            /* 通常表示へ戻るときはカーソルを消す。 */
+            cursor_visible = false;
+            cursor_update_required = true;
         }
 
         update_required = true;
@@ -73,12 +102,31 @@ bool is_clock_setting(void)
  */
 void update_clock_cursor(void)
 {
+    unsigned int now_time_10ms;
+
     if (clock_state == CLOCK_SETTING_STATE) {
-        /* 最初の変更対象は秒の1の位（2行目12桁目）。 */
-        LCD_cursor_on();
-        LCD_locate(12, 2);
-    } else {
-        LCD_cursor_off();
+        now_time_10ms = get_time_10ms();
+
+        /* 500ms経過するたびに下線カーソルの表示状態を反転する。 */
+        if ((unsigned int)(now_time_10ms - cursor_last_time_10ms) >=
+            CURSOR_BLINK_TIME_10MS) {
+            cursor_last_time_10ms = now_time_10ms;
+            cursor_visible = !cursor_visible;
+            cursor_update_required = true;
+        }
+    }
+
+    if (cursor_update_required == true) {
+        if ((clock_state == CLOCK_SETTING_STATE) &&
+            (cursor_visible == true)) {
+            /* 最初の変更対象は秒の1の位。 */
+            LCD_locate(CURSOR_SECOND_X, CURSOR_SECOND_Y);
+            LCD_cursor_on();
+        } else {
+            LCD_cursor_off();
+        }
+
+        cursor_update_required = false;
     }
 }
 

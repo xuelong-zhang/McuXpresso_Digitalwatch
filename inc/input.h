@@ -1,8 +1,6 @@
-/*
- * input.h
- *
- *  Created on: 2026/09/01
- *      Author: 4104720
+/**
+ * @file input.h
+ * @brief デジタル時計 システム入力部ヘッダ
  */
 
 #ifndef INPUT_H_
