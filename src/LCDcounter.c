@@ -17,6 +17,9 @@
 #include "mode_clock.h"
 #include "mode_manager.h"
 #include "mode_stopwatch.h"
+#include "mode_alarm.h"
+#include "Buzzer.h"
+#include "Timer.h"
 
 /* 曜日表示文字列 */
 static const char *const weekday_text[] = {
@@ -27,8 +30,9 @@ static const char *const weekday_text[] = {
 static void SYS_init(void);
 static void disp_datetime(const datetime_t *datetime);
 static void disp_stopwatch(const stopwatch_t *stopwatch);
-static void disp_mode_screen(system_mode_t mode,
-                             datetime_t *display_datetime);
+static void disp_alarm(const alarm_info_t *alarm_info,
+                       const datetime_t *current_datetime);
+static void disp_mode_screen(system_mode_t mode, datetime_t *display_datetime);
 
 /**
  * メイン処理
@@ -36,12 +40,16 @@ static void disp_mode_screen(system_mode_t mode,
 int main(void)
 {
     datetime_t display_datetime;
+    datetime_t current_datetime;
     stopwatch_t display_stopwatch;
+    alarm_info_t display_alarm;
     system_mode_t previous_mode;
+
     int error_no = 0;
     int err_lcd = 0;
     int datetime_updated;
     int stopwatch_updated;
+    int alarm_enable_updated;
     unsigned int chk_10ms;
     unsigned int elapsed_10ms;
     unsigned int past1sec = 0;
@@ -51,6 +59,7 @@ int main(void)
     init_mode_clock();
     init_mode_manager();
     init_mode_stopwatch();
+    init_mode_alarm();
 
     chk_10ms = get_time_10ms();
 
@@ -71,14 +80,28 @@ int main(void)
         /* OK／SW1で表示モードを切り替える */
         if (update_mode_manager() == true) {
             /* 時計モードから移行する場合は日付時刻設定を終了する */
-            if (previous_mode == MODE_CLOCK) {
-                exit_clock_setting();
-            }
+        	if (previous_mode == MODE_CLOCK) {
+        	    exit_clock_setting();
+        	} else if (previous_mode == MODE_ALARM) {
+        	    /* アラームモードから移行する場合は時刻設定を終了する */
+        	    exit_alarm_setting();
+        	}
 
             disp_mode_screen(
                 get_current_mode(),
                 &display_datetime
             );
+        }
+
+        /* 目覚ましスイッチは表示モードに関係なく処理する */
+        alarm_enable_updated = update_alarm_enable();
+
+        if ((alarm_enable_updated != 0) &&
+            (get_current_mode() == MODE_ALARM)) {
+            get_alarm(&display_alarm);
+            get_datetime(&current_datetime);
+            disp_alarm(&display_alarm, &current_datetime);
+            request_alarm_cursor_update();
         }
 
         /* 現在の表示モードに対応する処理だけを実行する */
@@ -98,7 +121,14 @@ int main(void)
             break;
 
         case MODE_ALARM:
-            /* アラーム処理は後の段階で実装する */
+            if (mode_alarm() == true) {
+                get_alarm(&display_alarm);
+                get_datetime(&current_datetime);
+                disp_alarm(&display_alarm, &current_datetime);
+                request_alarm_cursor_update();
+            }
+
+            update_alarm_cursor();
             break;
 
         default:
@@ -122,7 +152,9 @@ int main(void)
             break;
 
         default:
-            LED_alloff();
+            LED_off(LED1);
+            LED_off(LED2);
+            LED_off(LED3);
             break;
         }
 
@@ -141,6 +173,11 @@ int main(void)
             while (past1sec >= 100U) {
                 past1sec -= 100U;
                 update_datetime();
+
+                /* アラーム判定と鳴動時間は1秒ごとに更新する */
+                get_datetime(&current_datetime);
+                update_alarm(&current_datetime);
+
                 datetime_updated = 1;
             }
 
@@ -158,6 +195,15 @@ int main(void)
                 (get_current_mode() == MODE_STOPWATCH)) {
                 get_stopwatch(&display_stopwatch);
                 disp_stopwatch(&display_stopwatch);
+            }
+
+            /* アラームモードでは現在時刻の時・分を更新する */
+            if ((datetime_updated != 0) &&
+                (get_current_mode() == MODE_ALARM)) {
+                get_alarm(&display_alarm);
+                get_datetime(&current_datetime);
+                disp_alarm(&display_alarm, &current_datetime);
+                request_alarm_cursor_update();
             }
         }
     }
@@ -276,6 +322,61 @@ static void disp_stopwatch(const stopwatch_t *stopwatch)
 }
 
 /**
+ * アラーム時刻と現在時刻をLCD表示バッファへ格納する。
+ *
+ * 1行目：ALARM  0:00
+ * 2行目：  0:00
+ *
+ * @param[in] alarm_info アラーム表示情報
+ * @param[in] current_datetime 現在の日付時刻
+ */
+static void disp_alarm(const alarm_info_t *alarm_info,
+                       const datetime_t *current_datetime)
+{
+    char number_string[4];
+
+    if ((alarm_info == 0) || (current_datetime == 0)) {
+        return;
+    }
+
+    /* LCDの1行目へアラーム時刻を表示する */
+    LCD_locate(1, 1);
+    (void)LCD_puts("ALARM ");
+
+    /* アラーム時刻の時を表示する */
+    (void)LCD_puts(
+        myitoa((int)alarm_info->hour, number_string, 2, ' ')
+    );
+    (void)LCD_putchar(':');
+
+    /* アラーム時刻の分を表示する */
+    (void)LCD_puts(
+        myitoa((int)alarm_info->minute, number_string, 2, '0')
+    );
+
+    /* 1行を16文字にする */
+    (void)LCD_puts("     ");
+
+    /* LCDの2行目へ現在時刻を表示する */
+    LCD_locate(1, 2);
+    (void)LCD_puts("  ");
+
+    /* 現在時刻の時を表示する */
+    (void)LCD_puts(
+        myitoa(current_datetime->hour, number_string, 2, ' ')
+    );
+    (void)LCD_putchar(':');
+
+    /* 現在時刻の分を表示する */
+    (void)LCD_puts(
+        myitoa(current_datetime->minute, number_string, 2, '0')
+    );
+
+    /* 1行を16文字にする */
+    (void)LCD_puts("         ");
+}
+
+/**
  * システムを初期化する。
  */
 static void SYS_init(void)
@@ -284,6 +385,8 @@ static void SYS_init(void)
 
     LED_setup();
     tactSW_setup();
+    Buzzer_setup();
+    Timer_init();
     SysTick_init();
 
     __enable_irq();
@@ -307,6 +410,8 @@ static void disp_mode_screen(system_mode_t mode,
                              datetime_t *display_datetime)
 {
     stopwatch_t display_stopwatch;
+    alarm_info_t display_alarm;
+    datetime_t current_datetime;
 
     LCD_cls();
 
@@ -322,16 +427,16 @@ static void disp_mode_screen(system_mode_t mode,
         break;
 
     case MODE_ALARM:
-        LCD_locate(1, 1);
-        (void)LCD_puts("ALARM     0:00  ");
-        LCD_locate(1, 2);
-        (void)LCD_puts("     0:00       ");
+        get_alarm(&display_alarm);
+        get_datetime(&current_datetime);
+        disp_alarm(&display_alarm, &current_datetime);
         break;
 
     default:
         break;
     }
 }
+
 
 /******************************************************************************
  * ファイル終端

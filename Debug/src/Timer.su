@@ -1,0 +1,8 @@
+C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\inc/core_cm3.h:1323:22:NVIC_EnableIRQ	16	static
+C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\inc/core_cm3.h:1375:22:NVIC_ClearPendingIRQ	16	static
+../src/Timer.c:44:6:Timer_init	16	static
+../src/Timer.c:74:6:Timer_start	16	static
+../src/Timer.c:96:6:Timer_stop	8	static
+../src/Timer.c:108:6:TIMER0_IRQHandler	8	static
+../src/Timer.c:120:21:get_timer0_pclk	16	static
+../src/Timer.c:146:21:get_prescaler_for_1us	16	static
