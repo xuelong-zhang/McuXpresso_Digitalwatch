@@ -14,6 +14,7 @@
 #include "clib.h"
 #include "datetime.h"
 #include "input.h"
+#include "mode_clock.h"
 
 
 /* 曜日表示文字列 */
@@ -36,13 +37,14 @@ int main(void)
 
 	int error_no = 0;
 	int err_lcd = 0;
-	int test_led = 0;//TEST SW
+//	int test_led = 0;//TEST SW
 
 	unsigned int chk_10ms;
 	unsigned int past1sec = 0;
 
 	SYS_init();
 	init_datetime();
+	init_mode_clock();
 
 	chk_10ms = get_time_10ms();
 
@@ -59,29 +61,35 @@ int main(void)
 
 	    update_switch();
 
-	    if (clicked_LeftSW() == true) {
-	        test_led = 1;
-	    } else if (clicked_RightSW() == true) {
-	        test_led = 2;
-	    } else if (clicked_DownSW() == true) {
-	        test_led = 3;
-	    } else if (clicked_UpSW() == true) {
-	        test_led = 4;
-	    } else if (clicked_ModeSW() == true) {
-	        test_led = 5;
-	    } else if (clicked_FunctionSW() == true) {
-	        test_led = 6;
-	    } else if (clicked_AlarmSW() == true) {
-	        test_led = 7;
+	    if (mode_clock(&display_datetime) == true) {
+	        disp_datetime(&display_datetime);
+	        update_clock_cursor();
 	    }
 
-	    if (error_no == 0) {
-	        LED_alloff();
+	    /*Sw test*/
+//	    if (clicked_LeftSW() == true) {
+//	        test_led = 1;
+//	    } else if (clicked_RightSW() == true) {
+//	        test_led = 2;
+//	    } else if (clicked_DownSW() == true) {
+//	        test_led = 3;
+//	    } else if (clicked_UpSW() == true) {
+//	        test_led = 4;
+//	    } else if (clicked_ModeSW() == true) {
+//	        test_led = 5;
+//	    } else if (clicked_FunctionSW() == true) {
+//	        test_led = 6;
+//	    } else if (clicked_AlarmSW() == true) {
+//	        test_led = 7;
+//	    }
 
-	        if (test_led != 0) {
-	            LED_on(test_led);
-	        }
-	    }
+//	    if (error_no == 0) {
+//	        LED_alloff();
+//
+////	        if (test_led != 0) {
+////	            LED_on(test_led);
+////	        }
+//	    }
 
 		if (err_lcd != 0) {
 			if (error_no == 0) {
@@ -115,11 +123,13 @@ int main(void)
 			 * 10ms割込み100回で1秒
 			 */
 			if (past1sec >= 100) {
-				past1sec = 0;
+			    past1sec = 0;
 
-				update_datetime();
-				get_datetime(&display_datetime);
-				disp_datetime(&display_datetime);
+			    if (is_clock_setting() == false) {
+			        update_datetime();
+			        get_datetime(&display_datetime);
+			        disp_datetime(&display_datetime);
+			    }
 			}
 		}
 	}

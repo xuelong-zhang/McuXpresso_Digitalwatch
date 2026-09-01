@@ -15,6 +15,7 @@ C_SRCS += \
 ../src/crp.c \
 ../src/datetime.c \
 ../src/input.c \
+../src/mode_clock.c \
 ../src/tactSW.c 
 
 C_DEPS += \
@@ -29,6 +30,7 @@ C_DEPS += \
 ./src/crp.d \
 ./src/datetime.d \
 ./src/input.d \
+./src/mode_clock.d \
 ./src/tactSW.d 
 
 OBJS += \
@@ -43,6 +45,7 @@ OBJS += \
 ./src/crp.o \
 ./src/datetime.o \
 ./src/input.o \
+./src/mode_clock.o \
 ./src/tactSW.o 
 
 
@@ -58,7 +61,7 @@ src/%.o: ../src/%.c src/subdir.mk
 clean: clean-src
 
 clean-src:
-	-$(RM) ./src/Delay.d ./src/Delay.o ./src/GPIO.d ./src/GPIO.o ./src/LCD.d ./src/LCD.o ./src/LCDcounter.d ./src/LCDcounter.o ./src/LED.d ./src/LED.o ./src/SysTick.d ./src/SysTick.o ./src/clib.d ./src/clib.o ./src/cr_startup_lpc175x_6x.d ./src/cr_startup_lpc175x_6x.o ./src/crp.d ./src/crp.o ./src/datetime.d ./src/datetime.o ./src/input.d ./src/input.o ./src/tactSW.d ./src/tactSW.o
+	-$(RM) ./src/Delay.d ./src/Delay.o ./src/GPIO.d ./src/GPIO.o ./src/LCD.d ./src/LCD.o ./src/LCDcounter.d ./src/LCDcounter.o ./src/LED.d ./src/LED.o ./src/SysTick.d ./src/SysTick.o ./src/clib.d ./src/clib.o ./src/cr_startup_lpc175x_6x.d ./src/cr_startup_lpc175x_6x.o ./src/crp.d ./src/crp.o ./src/datetime.d ./src/datetime.o ./src/input.d ./src/input.o ./src/mode_clock.d ./src/mode_clock.o ./src/tactSW.d ./src/tactSW.o
 
 .PHONY: clean-src
 

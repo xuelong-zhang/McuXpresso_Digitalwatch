@@ -1,0 +1,4 @@
+../src/mode_clock.c:29:6:init_mode_clock	4	static
+../src/mode_clock.c:37:6:mode_clock	32	static
+../src/mode_clock.c:66:6:is_clock_setting	4	static
+../src/mode_clock.c:74:6:update_clock_cursor	8	static

@@ -80,13 +80,13 @@ static bool get_clicked_event(int switch_no)
 /** モード切替スイッチ（CANCEL／SW_CENTER） */
 bool clicked_ModeSW(void)
 {
-    return get_clicked_event(BTN_CANCEL);
+    return get_clicked_event(BTN_OK);
 }
 
 /** 変更切替スイッチ（OK／SW1） */
 bool clicked_FunctionSW(void)
 {
-    return get_clicked_event(BTN_OK);
+    return get_clicked_event(BTN_CANCEL);
 }
 
 /** 左移動スイッチ */
