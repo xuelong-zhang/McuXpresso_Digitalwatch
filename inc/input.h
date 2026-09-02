@@ -8,13 +8,13 @@
 
 #include <stdbool.h>
 
-/** スイッチ入力管理を初期化する。 */
+/**スイッチ入力管理を初期化する。 */
 void init_switch(void);
 
-/** 全スイッチのクリックイベントを更新する。 */
+/* 全スイッチのクリックイベントを更新する。 */
 void update_switch(void);
 
-/** 各スイッチのクリックイベントを取得する。 */
+/* 各スイッチのクリックイベントを取得する。 */
 bool clicked_ModeSW(void);
 bool clicked_FunctionSW(void);
 bool clicked_LeftSW(void);

@@ -76,6 +76,26 @@ Discarded input sections
  .text.Delay_sec
                 0x00000000       0x2e ./src/Delay.o
  .debug_macro   0x00000000      0xae4 ./src/Delay.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .group         0x00000000        0xc ./src/Digitalwatch.o
+ .text          0x00000000        0x0 ./src/Digitalwatch.o
+ .data          0x00000000        0x0 ./src/Digitalwatch.o
+ .bss           0x00000000        0x0 ./src/Digitalwatch.o
+ .debug_macro   0x00000000      0xae4 ./src/Digitalwatch.o
+ .debug_macro   0x00000000       0x10 ./src/Digitalwatch.o
+ .debug_macro   0x00000000      0x12e ./src/Digitalwatch.o
+ .debug_macro   0x00000000      0x5b3 ./src/Digitalwatch.o
+ .debug_macro   0x00000000       0x22 ./src/Digitalwatch.o
  .group         0x00000000        0xc ./src/GPIO.o
  .group         0x00000000        0xc ./src/GPIO.o
  .group         0x00000000        0xc ./src/GPIO.o
@@ -117,35 +137,15 @@ Discarded input sections
  .debug_macro   0x00000000      0xae4 ./src/LCD.o
  .debug_macro   0x00000000       0x10 ./src/LCD.o
  .debug_macro   0x00000000       0x22 ./src/LCD.o
+ .debug_macro   0x00000000       0x1c ./src/LCD.o
+ .debug_macro   0x00000000       0x3a ./src/LCD.o
  .debug_macro   0x00000000      0x12e ./src/LCD.o
  .debug_macro   0x00000000      0x5b3 ./src/LCD.o
+ .debug_macro   0x00000000       0x2d ./src/LCD.o
+ .debug_macro   0x00000000      0xbb1 ./src/LCD.o
+ .debug_macro   0x00000000      0x2c7 ./src/LCD.o
  .debug_macro   0x00000000       0x70 ./src/LCD.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .group         0x00000000        0xc ./src/LCDcounter.o
- .text          0x00000000        0x0 ./src/LCDcounter.o
- .data          0x00000000        0x0 ./src/LCDcounter.o
- .bss           0x00000000        0x0 ./src/LCDcounter.o
- .debug_macro   0x00000000      0xae4 ./src/LCDcounter.o
- .debug_macro   0x00000000       0x1c ./src/LCDcounter.o
- .debug_macro   0x00000000       0x3a ./src/LCDcounter.o
- .debug_macro   0x00000000       0x10 ./src/LCDcounter.o
- .debug_macro   0x00000000      0x12e ./src/LCDcounter.o
- .debug_macro   0x00000000      0x5b3 ./src/LCDcounter.o
- .debug_macro   0x00000000       0x2d ./src/LCDcounter.o
- .debug_macro   0x00000000      0xbb1 ./src/LCDcounter.o
- .debug_macro   0x00000000      0x2c7 ./src/LCDcounter.o
- .debug_macro   0x00000000       0x40 ./src/LCDcounter.o
- .debug_macro   0x00000000       0x22 ./src/LCDcounter.o
+ .debug_macro   0x00000000       0x40 ./src/LCD.o
  .group         0x00000000        0xc ./src/LED.o
  .group         0x00000000        0xc ./src/LED.o
  .group         0x00000000        0xc ./src/LED.o
@@ -774,9 +774,9 @@ Linker script and memory map
 
 LOAD ./src/Buzzer.o
 LOAD ./src/Delay.o
+LOAD ./src/Digitalwatch.o
 LOAD ./src/GPIO.o
 LOAD ./src/LCD.o
-LOAD ./src/LCDcounter.o
 LOAD ./src/LED.o
 LOAD ./src/Melody.o
 LOAD ./src/SysTick.o
@@ -810,7 +810,7 @@ END GROUP
                 0x20084000                        __top_RamAHB32 = 0x20084000
                 0x20084000                        __top_RAM2 = 0x20084000
 
-.text           0x00000000     0x32cc
+.text           0x00000000     0x32a8
  FILL mask 0xff
                 0x00000000                        __vectors_start__ = ABSOLUTE (.)
  *(.isr_vector)
@@ -819,10 +819,10 @@ END GROUP
                 0x000000cc                        . = ALIGN (0x4)
                 0x000000cc                        __section_table_start = .
                 0x000000cc                        __data_section_table = .
-                0x000000cc        0x4 LONG 0x32cc LOADADDR (.data)
+                0x000000cc        0x4 LONG 0x32a8 LOADADDR (.data)
                 0x000000d0        0x4 LONG 0x10000000 ADDR (.data)
                 0x000000d4        0x4 LONG 0x8c SIZEOF (.data)
-                0x000000d8        0x4 LONG 0x32cc LOADADDR (.data_RAM2)
+                0x000000d8        0x4 LONG 0x32a8 LOADADDR (.data_RAM2)
                 0x000000dc        0x4 LONG 0x2007c000 ADDR (.data_RAM2)
                 0x000000e0        0x4 LONG 0x0 SIZEOF (.data_RAM2)
                 0x000000e4                        __data_section_table_end = .
@@ -912,356 +912,356 @@ END GROUP
  .text.Delay_ms
                 0x000003d6       0x2a ./src/Delay.o
                 0x000003d6                Delay_ms
- .text.GPIO_setDir
-                0x00000400       0x70 ./src/GPIO.o
-                0x00000400                GPIO_setDir
- .text.GPIO_setValueBit
-                0x00000470       0x5c ./src/GPIO.o
-                0x00000470                GPIO_setValueBit
- .text.GPIO_getValueBit
-                0x000004cc       0x4c ./src/GPIO.o
-                0x000004cc                GPIO_getValueBit
- .text.GPIO_getValue
-                0x00000518       0x30 ./src/GPIO.o
-                0x00000518                GPIO_getValue
- .text.LCD_setup
-                0x00000548       0xbc ./src/LCD.o
-                0x00000548                LCD_setup
- .text.LCD_init
-                0x00000604       0xac ./src/LCD.o
-                0x00000604                LCD_init
- .text.LCD_display
-                0x000006b0       0xb8 ./src/LCD.o
-                0x000006b0                LCD_display
- .text.esc_op   0x00000768      0x1ec ./src/LCD.o
- .text.LCD_locate
-                0x00000954       0x54 ./src/LCD.o
-                0x00000954                LCD_locate
- .text.LCD_puts
-                0x000009a8       0x40 ./src/LCD.o
-                0x000009a8                LCD_puts
- .text.LCD_putchar
-                0x000009e8       0x84 ./src/LCD.o
-                0x000009e8                LCD_putchar
- .text.read_buf
-                0x00000a6c       0x68 ./src/LCD.o
- .text.LCD_reset_lcdbuf
-                0x00000ad4       0x4c ./src/LCD.o
-                0x00000ad4                LCD_reset_lcdbuf
- .text.LCD_read_4bitDB
-                0x00000b20       0x72 ./src/LCD.o
- .text.LCD_write_4bitDB
-                0x00000b92       0x66 ./src/LCD.o
- .text.LCD_read_nibble
-                0x00000bf8       0x84 ./src/LCD.o
- .text.LCD_read_byte
-                0x00000c7c       0x38 ./src/LCD.o
- .text.LCD_write_nibble
-                0x00000cb4       0x8e ./src/LCD.o
- .text.LCD_write_byte
-                0x00000d42       0x3a ./src/LCD.o
- .text.LCD_is_busy
-                0x00000d7c       0x26 ./src/LCD.o
- *fill*         0x00000da2        0x2 ff
- .text.main     0x00000da4      0x294 ./src/LCDcounter.o
-                0x00000da4                main
+ .text.main     0x00000400      0x270 ./src/Digitalwatch.o
+                0x00000400                main
  .text.disp_datetime
-                0x00001038      0x100 ./src/LCDcounter.o
+                0x00000670      0x100 ./src/Digitalwatch.o
  .text.disp_stopwatch
-                0x00001138       0xa8 ./src/LCDcounter.o
+                0x00000770       0xa8 ./src/Digitalwatch.o
  .text.disp_alarm
-                0x000011e0       0xc8 ./src/LCDcounter.o
+                0x00000818       0xc8 ./src/Digitalwatch.o
  .text.SYS_init
-                0x000012a8       0x3e ./src/LCDcounter.o
- *fill*         0x000012e6        0x2 ff
+                0x000008e0       0x3e ./src/Digitalwatch.o
+ *fill*         0x0000091e        0x2 ff
  .text.disp_mode_screen
-                0x000012e8       0x80 ./src/LCDcounter.o
+                0x00000920       0x80 ./src/Digitalwatch.o
+ .text.GPIO_setDir
+                0x000009a0       0x70 ./src/GPIO.o
+                0x000009a0                GPIO_setDir
+ .text.GPIO_setValueBit
+                0x00000a10       0x5c ./src/GPIO.o
+                0x00000a10                GPIO_setValueBit
+ .text.GPIO_getValueBit
+                0x00000a6c       0x4c ./src/GPIO.o
+                0x00000a6c                GPIO_getValueBit
+ .text.GPIO_getValue
+                0x00000ab8       0x30 ./src/GPIO.o
+                0x00000ab8                GPIO_getValue
+ .text.LCD_setup
+                0x00000ae8       0xbc ./src/LCD.o
+                0x00000ae8                LCD_setup
+ .text.LCD_init
+                0x00000ba4       0xac ./src/LCD.o
+                0x00000ba4                LCD_init
+ .text.LCD_display
+                0x00000c50       0xb8 ./src/LCD.o
+                0x00000c50                LCD_display
+ .text.esc_op   0x00000d08      0x1ec ./src/LCD.o
+ .text.LCD_locate
+                0x00000ef4       0x54 ./src/LCD.o
+                0x00000ef4                LCD_locate
+ .text.LCD_puts
+                0x00000f48       0x40 ./src/LCD.o
+                0x00000f48                LCD_puts
+ .text.LCD_putchar
+                0x00000f88       0x84 ./src/LCD.o
+                0x00000f88                LCD_putchar
+ .text.read_buf
+                0x0000100c       0x68 ./src/LCD.o
+ .text.LCD_reset_lcdbuf
+                0x00001074       0x4c ./src/LCD.o
+                0x00001074                LCD_reset_lcdbuf
+ .text.LCD_read_4bitDB
+                0x000010c0       0x72 ./src/LCD.o
+ .text.LCD_write_4bitDB
+                0x00001132       0x66 ./src/LCD.o
+ .text.LCD_read_nibble
+                0x00001198       0x84 ./src/LCD.o
+ .text.LCD_read_byte
+                0x0000121c       0x38 ./src/LCD.o
+ .text.LCD_write_nibble
+                0x00001254       0x8e ./src/LCD.o
+ .text.LCD_write_byte
+                0x000012e2       0x3a ./src/LCD.o
+ .text.LCD_is_busy
+                0x0000131c       0x26 ./src/LCD.o
+ *fill*         0x00001342        0x2 ff
  .text.LED_setup
-                0x00001368      0x15c ./src/LED.o
-                0x00001368                LED_setup
- .text.LED_on   0x000014c4       0x3c ./src/LED.o
-                0x000014c4                LED_on
- .text.LED_off  0x00001500       0x3c ./src/LED.o
-                0x00001500                LED_off
+                0x00001344      0x15c ./src/LED.o
+                0x00001344                LED_setup
+ .text.LED_on   0x000014a0       0x3c ./src/LED.o
+                0x000014a0                LED_on
+ .text.LED_off  0x000014dc       0x3c ./src/LED.o
+                0x000014dc                LED_off
  .text.Melody_init
-                0x0000153c       0x34 ./src/Melody.o
-                0x0000153c                Melody_init
+                0x00001518       0x34 ./src/Melody.o
+                0x00001518                Melody_init
  .text.Melody_start
-                0x00001570       0x2c ./src/Melody.o
-                0x00001570                Melody_start
+                0x0000154c       0x2c ./src/Melody.o
+                0x0000154c                Melody_start
  .text.Melody_stop
-                0x0000159c       0x34 ./src/Melody.o
-                0x0000159c                Melody_stop
+                0x00001578       0x34 ./src/Melody.o
+                0x00001578                Melody_stop
  .text.Melody_update
-                0x000015d0       0xe8 ./src/Melody.o
-                0x000015d0                Melody_update
+                0x000015ac       0xe8 ./src/Melody.o
+                0x000015ac                Melody_update
  .text.start_current_note
-                0x000016b8       0x44 ./src/Melody.o
+                0x00001694       0x44 ./src/Melody.o
  .text.get_time_10ms
-                0x000016fc       0x14 ./src/SysTick.o
-                0x000016fc                get_time_10ms
+                0x000016d8       0x14 ./src/SysTick.o
+                0x000016d8                get_time_10ms
  .text.SysTick_init
-                0x00001710       0x24 ./src/SysTick.o
-                0x00001710                SysTick_init
+                0x000016ec       0x24 ./src/SysTick.o
+                0x000016ec                SysTick_init
  .text.SysTick_Handler
-                0x00001734       0x94 ./src/SysTick.o
-                0x00001734                SysTick_Handler
+                0x00001710       0x94 ./src/SysTick.o
+                0x00001710                SysTick_Handler
  .text.NVIC_EnableIRQ
-                0x000017c8       0x30 ./src/Timer.o
+                0x000017a4       0x30 ./src/Timer.o
  .text.NVIC_DisableIRQ
-                0x000017f8       0x34 ./src/Timer.o
+                0x000017d4       0x34 ./src/Timer.o
  .text.NVIC_ClearPendingIRQ
-                0x0000182c       0x34 ./src/Timer.o
+                0x00001808       0x34 ./src/Timer.o
  .text.Timer_init
-                0x00001860       0x94 ./src/Timer.o
-                0x00001860                Timer_init
+                0x0000183c       0x94 ./src/Timer.o
+                0x0000183c                Timer_init
  .text.Timer_start
-                0x000018f4       0x80 ./src/Timer.o
-                0x000018f4                Timer_start
+                0x000018d0       0x80 ./src/Timer.o
+                0x000018d0                Timer_start
  .text.Timer_stop
-                0x00001974       0x58 ./src/Timer.o
-                0x00001974                Timer_stop
+                0x00001950       0x58 ./src/Timer.o
+                0x00001950                Timer_stop
  .text.TIMER0_IRQHandler
-                0x000019cc       0x34 ./src/Timer.o
-                0x000019cc                TIMER0_IRQHandler
+                0x000019a8       0x34 ./src/Timer.o
+                0x000019a8                TIMER0_IRQHandler
  .text.get_timer0_pclk
-                0x00001a00       0x5c ./src/Timer.o
+                0x000019dc       0x5c ./src/Timer.o
  .text.get_prescaler_for_1us
-                0x00001a5c       0x34 ./src/Timer.o
- .text.myitoa   0x00001a90       0xb0 ./src/clib.o
-                0x00001a90                myitoa
- .text.reverse  0x00001b40       0x5c ./src/clib.o
+                0x00001a38       0x34 ./src/Timer.o
+ .text.myitoa   0x00001a6c       0xb0 ./src/clib.o
+                0x00001a6c                myitoa
+ .text.reverse  0x00001b1c       0x5c ./src/clib.o
  .text.init_datetime
-                0x00001b9c       0x3c ./src/datetime.o
-                0x00001b9c                init_datetime
+                0x00001b78       0x3c ./src/datetime.o
+                0x00001b78                init_datetime
  .text.update_datetime
-                0x00001bd8       0xc8 ./src/datetime.o
-                0x00001bd8                update_datetime
+                0x00001bb4       0xc8 ./src/datetime.o
+                0x00001bb4                update_datetime
  .text.get_datetime
-                0x00001ca0       0x30 ./src/datetime.o
-                0x00001ca0                get_datetime
+                0x00001c7c       0x30 ./src/datetime.o
+                0x00001c7c                get_datetime
  .text.set_datetime
-                0x00001cd0       0x34 ./src/datetime.o
-                0x00001cd0                set_datetime
+                0x00001cac       0x34 ./src/datetime.o
+                0x00001cac                set_datetime
  .text.normalize_datetime
-                0x00001d04      0x104 ./src/datetime.o
-                0x00001d04                normalize_datetime
+                0x00001ce0      0x104 ./src/datetime.o
+                0x00001ce0                normalize_datetime
  .text.get_last_day
-                0x00001e08       0x48 ./src/datetime.o
-                0x00001e08                get_last_day
+                0x00001de4       0x48 ./src/datetime.o
+                0x00001de4                get_last_day
  .text.is_leap_year
-                0x00001e50       0x64 ./src/datetime.o
+                0x00001e2c       0x64 ./src/datetime.o
  .text.calculate_weekday
-                0x00001eb4       0x90 ./src/datetime.o
+                0x00001e90       0x90 ./src/datetime.o
  .text.init_switch
-                0x00001f44       0x44 ./src/input.o
-                0x00001f44                init_switch
+                0x00001f20       0x44 ./src/input.o
+                0x00001f20                init_switch
  .text.update_switch
-                0x00001f88       0x64 ./src/input.o
-                0x00001f88                update_switch
+                0x00001f64       0x64 ./src/input.o
+                0x00001f64                update_switch
  .text.get_clicked_event
-                0x00001fec       0x3c ./src/input.o
+                0x00001fc8       0x3c ./src/input.o
  .text.clicked_ModeSW
-                0x00002028       0x10 ./src/input.o
-                0x00002028                clicked_ModeSW
+                0x00002004       0x10 ./src/input.o
+                0x00002004                clicked_ModeSW
  .text.clicked_FunctionSW
-                0x00002038       0x10 ./src/input.o
-                0x00002038                clicked_FunctionSW
+                0x00002014       0x10 ./src/input.o
+                0x00002014                clicked_FunctionSW
  .text.clicked_LeftSW
-                0x00002048       0x10 ./src/input.o
-                0x00002048                clicked_LeftSW
+                0x00002024       0x10 ./src/input.o
+                0x00002024                clicked_LeftSW
  .text.clicked_RightSW
-                0x00002058       0x10 ./src/input.o
-                0x00002058                clicked_RightSW
+                0x00002034       0x10 ./src/input.o
+                0x00002034                clicked_RightSW
  .text.clicked_UpSW
-                0x00002068       0x10 ./src/input.o
-                0x00002068                clicked_UpSW
+                0x00002044       0x10 ./src/input.o
+                0x00002044                clicked_UpSW
  .text.clicked_DownSW
-                0x00002078       0x10 ./src/input.o
-                0x00002078                clicked_DownSW
+                0x00002054       0x10 ./src/input.o
+                0x00002054                clicked_DownSW
  .text.clicked_AlarmSW
-                0x00002088       0x10 ./src/input.o
-                0x00002088                clicked_AlarmSW
+                0x00002064       0x10 ./src/input.o
+                0x00002064                clicked_AlarmSW
  .text.init_mode_alarm
-                0x00002098       0x94 ./src/mode_alarm.o
-                0x00002098                init_mode_alarm
+                0x00002074       0x94 ./src/mode_alarm.o
+                0x00002074                init_mode_alarm
  .text.mode_alarm
-                0x0000212c       0xb4 ./src/mode_alarm.o
-                0x0000212c                mode_alarm
+                0x00002108       0xb4 ./src/mode_alarm.o
+                0x00002108                mode_alarm
  .text.update_alarm_enable
-                0x000021e0       0x5c ./src/mode_alarm.o
-                0x000021e0                update_alarm_enable
+                0x000021bc       0x5c ./src/mode_alarm.o
+                0x000021bc                update_alarm_enable
  .text.update_alarm
-                0x0000223c       0x80 ./src/mode_alarm.o
-                0x0000223c                update_alarm
+                0x00002218       0x80 ./src/mode_alarm.o
+                0x00002218                update_alarm
  .text.update_alarm_10ms
-                0x000022bc       0x24 ./src/mode_alarm.o
-                0x000022bc                update_alarm_10ms
+                0x00002298       0x24 ./src/mode_alarm.o
+                0x00002298                update_alarm_10ms
  .text.get_alarm
-                0x000022e0       0x70 ./src/mode_alarm.o
-                0x000022e0                get_alarm
+                0x000022bc       0x70 ./src/mode_alarm.o
+                0x000022bc                get_alarm
  .text.exit_alarm_setting
-                0x00002350       0x58 ./src/mode_alarm.o
-                0x00002350                exit_alarm_setting
+                0x0000232c       0x58 ./src/mode_alarm.o
+                0x0000232c                exit_alarm_setting
  .text.request_alarm_cursor_update
-                0x000023a8       0x24 ./src/mode_alarm.o
-                0x000023a8                request_alarm_cursor_update
+                0x00002384       0x24 ./src/mode_alarm.o
+                0x00002384                request_alarm_cursor_update
  .text.update_alarm_cursor
-                0x000023cc       0xb4 ./src/mode_alarm.o
-                0x000023cc                update_alarm_cursor
+                0x000023a8       0xb4 ./src/mode_alarm.o
+                0x000023a8                update_alarm_cursor
  .text.restart_cursor_blink
-                0x00002480       0x2c ./src/mode_alarm.o
+                0x0000245c       0x2c ./src/mode_alarm.o
  .text.move_setting_item
-                0x000024ac       0x28 ./src/mode_alarm.o
+                0x00002488       0x28 ./src/mode_alarm.o
  .text.change_setting_value
-                0x000024d4       0x54 ./src/mode_alarm.o
+                0x000024b0       0x54 ./src/mode_alarm.o
  .text.change_cyclic_value
-                0x00002528       0x40 ./src/mode_alarm.o
+                0x00002504       0x40 ./src/mode_alarm.o
  .text.start_alarm
-                0x00002568       0x28 ./src/mode_alarm.o
+                0x00002544       0x28 ./src/mode_alarm.o
  .text.stop_alarm
-                0x00002590       0x28 ./src/mode_alarm.o
+                0x0000256c       0x28 ./src/mode_alarm.o
  .text.init_mode_clock
-                0x000025b8       0x48 ./src/mode_clock.o
-                0x000025b8                init_mode_clock
+                0x00002594       0x48 ./src/mode_clock.o
+                0x00002594                init_mode_clock
  .text.mode_clock
-                0x00002600      0x10c ./src/mode_clock.o
-                0x00002600                mode_clock
+                0x000025dc      0x10c ./src/mode_clock.o
+                0x000025dc                mode_clock
  .text.is_clock_setting
-                0x0000270c       0x20 ./src/mode_clock.o
-                0x0000270c                is_clock_setting
+                0x000026e8       0x20 ./src/mode_clock.o
+                0x000026e8                is_clock_setting
  .text.exit_clock_setting
-                0x0000272c       0x54 ./src/mode_clock.o
-                0x0000272c                exit_clock_setting
+                0x00002708       0x54 ./src/mode_clock.o
+                0x00002708                exit_clock_setting
  .text.update_clock_cursor
-                0x00002780       0xc4 ./src/mode_clock.o
-                0x00002780                update_clock_cursor
+                0x0000275c       0xc4 ./src/mode_clock.o
+                0x0000275c                update_clock_cursor
  .text.restart_cursor_blink
-                0x00002844       0x2c ./src/mode_clock.o
+                0x00002820       0x2c ./src/mode_clock.o
  .text.move_setting_item
-                0x00002870       0x58 ./src/mode_clock.o
+                0x0000284c       0x58 ./src/mode_clock.o
  .text.change_setting_value
-                0x000028c8       0xe8 ./src/mode_clock.o
+                0x000028a4       0xe8 ./src/mode_clock.o
  .text.change_cyclic_value
-                0x000029b0       0x40 ./src/mode_clock.o
+                0x0000298c       0x40 ./src/mode_clock.o
  .text.init_mode_manager
-                0x000029f0       0x18 ./src/mode_manager.o
-                0x000029f0                init_mode_manager
+                0x000029cc       0x18 ./src/mode_manager.o
+                0x000029cc                init_mode_manager
  .text.update_mode_manager
-                0x00002a08       0x48 ./src/mode_manager.o
-                0x00002a08                update_mode_manager
+                0x000029e4       0x48 ./src/mode_manager.o
+                0x000029e4                update_mode_manager
  .text.get_current_mode
-                0x00002a50       0x14 ./src/mode_manager.o
-                0x00002a50                get_current_mode
+                0x00002a2c       0x14 ./src/mode_manager.o
+                0x00002a2c                get_current_mode
  .text.init_mode_stopwatch
-                0x00002a64       0x20 ./src/mode_stopwatch.o
-                0x00002a64                init_mode_stopwatch
+                0x00002a40       0x20 ./src/mode_stopwatch.o
+                0x00002a40                init_mode_stopwatch
  .text.mode_stopwatch
-                0x00002a84       0x54 ./src/mode_stopwatch.o
-                0x00002a84                mode_stopwatch
+                0x00002a60       0x54 ./src/mode_stopwatch.o
+                0x00002a60                mode_stopwatch
  .text.update_stopwatch
-                0x00002ad8       0x6c ./src/mode_stopwatch.o
-                0x00002ad8                update_stopwatch
+                0x00002ab4       0x6c ./src/mode_stopwatch.o
+                0x00002ab4                update_stopwatch
  .text.get_stopwatch
-                0x00002b44       0x80 ./src/mode_stopwatch.o
-                0x00002b44                get_stopwatch
+                0x00002b20       0x80 ./src/mode_stopwatch.o
+                0x00002b20                get_stopwatch
  .text.tactSW_setup
-                0x00002bc4       0xc0 ./src/tactSW.o
-                0x00002bc4                tactSW_setup
+                0x00002ba0       0xc0 ./src/tactSW.o
+                0x00002ba0                tactSW_setup
  .text.tactSW_isfix
-                0x00002c84       0x20 ./src/tactSW.o
-                0x00002c84                tactSW_isfix
+                0x00002c60       0x20 ./src/tactSW.o
+                0x00002c60                tactSW_isfix
  .text.tactSW_read
-                0x00002ca4       0x30 ./src/tactSW.o
-                0x00002ca4                tactSW_read
+                0x00002c80       0x30 ./src/tactSW.o
+                0x00002c80                tactSW_read
  .text.tactSW_update
-                0x00002cd4       0x28 ./src/tactSW.o
-                0x00002cd4                tactSW_update
+                0x00002cb0       0x28 ./src/tactSW.o
+                0x00002cb0                tactSW_update
  .text.tactSW_getStatus
-                0x00002cfc       0x50 ./src/tactSW.o
-                0x00002cfc                tactSW_getStatus
+                0x00002cd8       0x50 ./src/tactSW.o
+                0x00002cd8                tactSW_getStatus
  .text.SystemInit
-                0x00002d4c       0xd8 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
-                0x00002d4c                SystemInit
+                0x00002d28       0xd8 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+                0x00002d28                SystemInit
  .text.__weak_main
-                0x00002e24        0x4 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
-                0x00002e24                __weak_main
-                0x00002e24                __main
- .text.abs      0x00002e28        0x8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
-                0x00002e28                abs
- .text.strlen   0x00002e30       0x4e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
-                0x00002e30                strlen
+                0x00002e00        0x4 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+                0x00002e00                __weak_main
+                0x00002e00                __main
+ .text.abs      0x00002e04        0x8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+                0x00002e04                abs
+ .text.strlen   0x00002e0c       0x4e C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+                0x00002e0c                strlen
  *(.rodata .rodata.* .constdata .constdata.*)
- *fill*         0x00002e7e        0x2 ff
- .rodata.LCD_locate.str1.4
-                0x00002e80       0x7e ./src/LCD.o
-                                  0x3 (size before relaxing)
+ *fill*         0x00002e5a        0x2 ff
  .rodata.str1.4
-                0x00002efe       0x1c ./src/LCDcounter.o
- *fill*         0x00002efe        0x2 ff
+                0x00002e5c       0x7e ./src/Digitalwatch.o
+                                 0x1c (size before relaxing)
+ *fill*         0x00002eda        0x2 ff
  .rodata.weekday_text
-                0x00002f00       0x1c ./src/LCDcounter.o
+                0x00002edc       0x1c ./src/Digitalwatch.o
  .rodata.main.str1.4
-                0x00002f1c        0x5 ./src/LCDcounter.o
+                0x00002ef8        0x5 ./src/Digitalwatch.o
  .rodata.disp_datetime.str1.4
-                0x00002f1c        0x5 ./src/LCDcounter.o
+                0x00002ef8        0x5 ./src/Digitalwatch.o
  .rodata.disp_stopwatch.str1.4
-                0x00002f1c       0x25 ./src/LCDcounter.o
+                0x00002ef8       0x25 ./src/Digitalwatch.o
  .rodata.disp_alarm.str1.4
-                0x00002f1c       0x1e ./src/LCDcounter.o
+                0x00002ef8       0x1e ./src/Digitalwatch.o
+ .rodata.LCD_locate.str1.4
+                0x00002ef8        0x3 ./src/LCD.o
  .rodata.melody_notes
-                0x00002f1c      0x198 ./src/Melody.o
+                0x00002ef8      0x198 ./src/Melody.o
  .rodata.last_day_table.1
-                0x000030b4       0x30 ./src/datetime.o
+                0x00003090       0x30 ./src/datetime.o
  .rodata.month_offset.0
-                0x000030e4       0x30 ./src/datetime.o
+                0x000030c0       0x30 ./src/datetime.o
  .rodata.cursor_x
-                0x00003114        0x8 ./src/mode_alarm.o
+                0x000030f0        0x8 ./src/mode_alarm.o
  .rodata.exit_alarm_setting.str1.4
-                0x0000311c        0x6 ./src/mode_alarm.o
+                0x000030f8        0x6 ./src/mode_alarm.o
  .rodata.update_alarm_cursor.str1.4
-                0x0000311c        0x6 ./src/mode_alarm.o
+                0x000030f8        0x6 ./src/mode_alarm.o
  .rodata.cursor_x
-                0x0000311c       0x18 ./src/mode_clock.o
+                0x000030f8       0x18 ./src/mode_clock.o
  .rodata.cursor_y
-                0x00003134       0x18 ./src/mode_clock.o
+                0x00003110       0x18 ./src/mode_clock.o
  .rodata.exit_clock_setting.str1.4
-                0x0000314c        0x6 ./src/mode_clock.o
+                0x00003128        0x6 ./src/mode_clock.o
  .rodata.update_clock_cursor.str1.4
-                0x0000314c        0x6 ./src/mode_clock.o
+                0x00003128        0x6 ./src/mode_clock.o
  .rodata.__ctype
-                0x0000314c      0x180 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
-                0x0000314c                __ctype
-                0x000032cc                        . = ALIGN (0x4)
+                0x00003128      0x180 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+                0x00003128                __ctype
+                0x000032a8                        . = ALIGN (0x4)
 
-.glue_7         0x000032cc        0x0
- .glue_7        0x000032cc        0x0 linker stubs
+.glue_7         0x000032a8        0x0
+ .glue_7        0x000032a8        0x0 linker stubs
 
-.glue_7t        0x000032cc        0x0
- .glue_7t       0x000032cc        0x0 linker stubs
+.glue_7t        0x000032a8        0x0
+ .glue_7t       0x000032a8        0x0 linker stubs
 
-.vfp11_veneer   0x000032cc        0x0
- .vfp11_veneer  0x000032cc        0x0 linker stubs
+.vfp11_veneer   0x000032a8        0x0
+ .vfp11_veneer  0x000032a8        0x0 linker stubs
 
-.v4_bx          0x000032cc        0x0
- .v4_bx         0x000032cc        0x0 linker stubs
+.v4_bx          0x000032a8        0x0
+ .v4_bx         0x000032a8        0x0 linker stubs
 
-.iplt           0x000032cc        0x0
- .iplt          0x000032cc        0x0 ./src/Buzzer.o
+.iplt           0x000032a8        0x0
+ .iplt          0x000032a8        0x0 ./src/Buzzer.o
 
-.rel.dyn        0x000032cc        0x0
- .rel.iplt      0x000032cc        0x0 ./src/Buzzer.o
+.rel.dyn        0x000032a8        0x0
+ .rel.iplt      0x000032a8        0x0 ./src/Buzzer.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM.exidx      0x000032cc        0x0
-                0x000032cc                        __exidx_start = .
+.ARM.exidx      0x000032a8        0x0
+                0x000032a8                        __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000032cc                        __exidx_end = .
-                0x000032cc                        _etext = .
+                0x000032a8                        __exidx_end = .
+                0x000032a8                        _etext = .
 
-.data_RAM2      0x2007c000        0x0 load address 0x000032cc
+.data_RAM2      0x2007c000        0x0 load address 0x000032a8
  FILL mask 0xff
                 [!provide]                        PROVIDE (__start_data_RAM2 = .)
                 [!provide]                        PROVIDE (__start_data_RamAHB32 = .)
@@ -1282,7 +1282,7 @@ END GROUP
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _end_uninit_RESERVED = .
 
-.data           0x10000000       0x8c load address 0x000032cc
+.data           0x10000000       0x8c load address 0x000032a8
  FILL mask 0xff
                 0x10000000                        _data = .
                 [!provide]                        PROVIDE (__start_data_RAM = .)
@@ -1317,7 +1317,7 @@ END GROUP
                 [!provide]                        PROVIDE (__end_data_RAM = .)
                 [!provide]                        PROVIDE (__end_data_RamLoc32 = .)
 
-.igot.plt       0x1000008c        0x0 load address 0x00003358
+.igot.plt       0x1000008c        0x0 load address 0x00003334
  .igot.plt      0x1000008c        0x0 ./src/Buzzer.o
 
 .bss_RAM2       0x2007c000        0x0
@@ -1463,62 +1463,62 @@ END GROUP
                 0x10008000                        PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
                 0xefff749e                        PROVIDE (__valid_user_code_checksum = (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
                 0x00000000                        _image_start = LOADADDR (.text)
-                0x00003358                        _image_end = (LOADADDR (.data) + SIZEOF (.data))
-                0x00003358                        _image_size = (_image_end - _image_start)
+                0x00003334                        _image_end = (LOADADDR (.data) + SIZEOF (.data))
+                0x00003334                        _image_size = (_image_end - _image_start)
 OUTPUT(Degitalwatch.axf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000     0x45a1
+.debug_info     0x00000000     0x4504
  .debug_info    0x00000000      0x25c ./src/Buzzer.o
  .debug_info    0x0000025c       0xd7 ./src/Delay.o
- .debug_info    0x00000333      0x2ba ./src/GPIO.o
- .debug_info    0x000005ed      0x718 ./src/LCD.o
- .debug_info    0x00000d05      0x798 ./src/LCDcounter.o
- .debug_info    0x0000149d      0x317 ./src/LED.o
- .debug_info    0x000017b4      0x1cd ./src/Melody.o
- .debug_info    0x00001981      0x160 ./src/SysTick.o
- .debug_info    0x00001ae1      0x446 ./src/Timer.o
- .debug_info    0x00001f27      0x22e ./src/clib.o
- .debug_info    0x00002155      0x2a8 ./src/cr_startup_lpc175x_6x.o
- .debug_info    0x000023fd       0x40 ./src/crp.o
- .debug_info    0x0000243d      0x2c4 ./src/datetime.o
- .debug_info    0x00002701      0x250 ./src/input.o
- .debug_info    0x00002951      0x5ff ./src/mode_alarm.o
- .debug_info    0x00002f50      0x46f ./src/mode_clock.o
- .debug_info    0x000033bf       0xc7 ./src/mode_manager.o
- .debug_info    0x00003486      0x188 ./src/mode_stopwatch.o
- .debug_info    0x0000360e      0x36e ./src/tactSW.o
- .debug_info    0x0000397c      0x347 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_info    0x00003cc3       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_info    0x00003d0d      0x2f8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_info    0x00004005      0x4bb C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_info    0x000044c0       0xe1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_info    0x00000333      0x6fb ./src/Digitalwatch.o
+ .debug_info    0x00000a2e      0x2ba ./src/GPIO.o
+ .debug_info    0x00000ce8      0x718 ./src/LCD.o
+ .debug_info    0x00001400      0x317 ./src/LED.o
+ .debug_info    0x00001717      0x1cd ./src/Melody.o
+ .debug_info    0x000018e4      0x160 ./src/SysTick.o
+ .debug_info    0x00001a44      0x446 ./src/Timer.o
+ .debug_info    0x00001e8a      0x22e ./src/clib.o
+ .debug_info    0x000020b8      0x2a8 ./src/cr_startup_lpc175x_6x.o
+ .debug_info    0x00002360       0x40 ./src/crp.o
+ .debug_info    0x000023a0      0x2c4 ./src/datetime.o
+ .debug_info    0x00002664      0x250 ./src/input.o
+ .debug_info    0x000028b4      0x5ff ./src/mode_alarm.o
+ .debug_info    0x00002eb3      0x46f ./src/mode_clock.o
+ .debug_info    0x00003322       0xc7 ./src/mode_manager.o
+ .debug_info    0x000033e9      0x188 ./src/mode_stopwatch.o
+ .debug_info    0x00003571      0x36e ./src/tactSW.o
+ .debug_info    0x000038df      0x347 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_info    0x00003c26       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_info    0x00003c70      0x2f8 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_info    0x00003f68      0x4bb C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_info    0x00004423       0xe1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_abbrev   0x00000000     0x1ed8
+.debug_abbrev   0x00000000     0x1ec3
  .debug_abbrev  0x00000000       0xc4 ./src/Buzzer.o
  .debug_abbrev  0x000000c4       0xb2 ./src/Delay.o
- .debug_abbrev  0x00000176      0x13d ./src/GPIO.o
- .debug_abbrev  0x000002b3      0x2b4 ./src/LCD.o
- .debug_abbrev  0x00000567      0x1d3 ./src/LCDcounter.o
- .debug_abbrev  0x0000073a      0x10d ./src/LED.o
- .debug_abbrev  0x00000847      0x114 ./src/Melody.o
- .debug_abbrev  0x0000095b       0xd7 ./src/SysTick.o
- .debug_abbrev  0x00000a32      0x1cf ./src/Timer.o
- .debug_abbrev  0x00000c01      0x13c ./src/clib.o
- .debug_abbrev  0x00000d3d      0x160 ./src/cr_startup_lpc175x_6x.o
- .debug_abbrev  0x00000e9d       0x38 ./src/crp.o
- .debug_abbrev  0x00000ed5      0x184 ./src/datetime.o
- .debug_abbrev  0x00001059      0x123 ./src/input.o
- .debug_abbrev  0x0000117c      0x28b ./src/mode_alarm.o
- .debug_abbrev  0x00001407      0x1e4 ./src/mode_clock.o
- .debug_abbrev  0x000015eb       0xc5 ./src/mode_manager.o
- .debug_abbrev  0x000016b0      0x11d ./src/mode_stopwatch.o
- .debug_abbrev  0x000017cd      0x196 ./src/tactSW.o
- .debug_abbrev  0x00001963      0x10e C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_abbrev  0x00001a71       0x4f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_abbrev  0x00001ac0       0xba C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_abbrev  0x00001b7a      0x2b7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_abbrev  0x00001e31       0xa7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_abbrev  0x00000176      0x1be ./src/Digitalwatch.o
+ .debug_abbrev  0x00000334      0x13d ./src/GPIO.o
+ .debug_abbrev  0x00000471      0x2b4 ./src/LCD.o
+ .debug_abbrev  0x00000725      0x10d ./src/LED.o
+ .debug_abbrev  0x00000832      0x114 ./src/Melody.o
+ .debug_abbrev  0x00000946       0xd7 ./src/SysTick.o
+ .debug_abbrev  0x00000a1d      0x1cf ./src/Timer.o
+ .debug_abbrev  0x00000bec      0x13c ./src/clib.o
+ .debug_abbrev  0x00000d28      0x160 ./src/cr_startup_lpc175x_6x.o
+ .debug_abbrev  0x00000e88       0x38 ./src/crp.o
+ .debug_abbrev  0x00000ec0      0x184 ./src/datetime.o
+ .debug_abbrev  0x00001044      0x123 ./src/input.o
+ .debug_abbrev  0x00001167      0x28b ./src/mode_alarm.o
+ .debug_abbrev  0x000013f2      0x1e4 ./src/mode_clock.o
+ .debug_abbrev  0x000015d6       0xc5 ./src/mode_manager.o
+ .debug_abbrev  0x0000169b      0x11d ./src/mode_stopwatch.o
+ .debug_abbrev  0x000017b8      0x196 ./src/tactSW.o
+ .debug_abbrev  0x0000194e      0x10e C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_abbrev  0x00001a5c       0x4f C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_abbrev  0x00001aab       0xba C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_abbrev  0x00001b65      0x2b7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_abbrev  0x00001e1c       0xa7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
 .debug_aranges  0x00000000      0x748
  .debug_aranges
@@ -1526,11 +1526,11 @@ LOAD linker stubs
  .debug_aranges
                 0x00000038       0x38 ./src/Delay.o
  .debug_aranges
-                0x00000070       0x40 ./src/GPIO.o
+                0x00000070       0x48 ./src/Digitalwatch.o
  .debug_aranges
-                0x000000b0       0x98 ./src/LCD.o
+                0x000000b8       0x40 ./src/GPIO.o
  .debug_aranges
-                0x00000148       0x48 ./src/LCDcounter.o
+                0x000000f8       0x98 ./src/LCD.o
  .debug_aranges
                 0x00000190       0x38 ./src/LED.o
  .debug_aranges
@@ -1573,9 +1573,9 @@ LOAD linker stubs
 .debug_ranges   0x00000000      0x5f0
  .debug_ranges  0x00000000       0x28 ./src/Buzzer.o
  .debug_ranges  0x00000028       0x28 ./src/Delay.o
- .debug_ranges  0x00000050       0x60 ./src/GPIO.o
- .debug_ranges  0x000000b0       0x88 ./src/LCD.o
- .debug_ranges  0x00000138       0x38 ./src/LCDcounter.o
+ .debug_ranges  0x00000050       0x38 ./src/Digitalwatch.o
+ .debug_ranges  0x00000088       0x60 ./src/GPIO.o
+ .debug_ranges  0x000000e8       0x88 ./src/LCD.o
  .debug_ranges  0x00000170       0x28 ./src/LED.o
  .debug_ranges  0x00000198       0x30 ./src/Melody.o
  .debug_ranges  0x000001c8       0x28 ./src/SysTick.o
@@ -1605,20 +1605,20 @@ LOAD linker stubs
  .debug_macro   0x00000d31      0x5b3 ./src/Buzzer.o
  .debug_macro   0x000012e4       0x10 ./src/Buzzer.o
  .debug_macro   0x000012f4       0x1b ./src/Delay.o
- .debug_macro   0x0000130f       0x63 ./src/GPIO.o
- .debug_macro   0x00001372       0x7c ./src/GPIO.o
- .debug_macro   0x000013ee       0xbe ./src/GPIO.o
- .debug_macro   0x000014ac      0x1c9 ./src/LCD.o
- .debug_macro   0x00001675       0x7c ./src/LCD.o
- .debug_macro   0x000016f1       0x1c ./src/LCD.o
- .debug_macro   0x0000170d       0x3a ./src/LCD.o
- .debug_macro   0x00001747       0x2d ./src/LCD.o
- .debug_macro   0x00001774      0xbb1 ./src/LCD.o
- .debug_macro   0x00002325      0x2c7 ./src/LCD.o
- .debug_macro   0x000025ec       0x16 ./src/LCD.o
- .debug_macro   0x00002602       0x40 ./src/LCD.o
- .debug_macro   0x00002642      0x115 ./src/LCDcounter.o
- .debug_macro   0x00002757       0x2e ./src/LCDcounter.o
+ .debug_macro   0x0000130f      0x115 ./src/Digitalwatch.o
+ .debug_macro   0x00001424       0x1c ./src/Digitalwatch.o
+ .debug_macro   0x00001440       0x3a ./src/Digitalwatch.o
+ .debug_macro   0x0000147a       0x2d ./src/Digitalwatch.o
+ .debug_macro   0x000014a7      0xbb1 ./src/Digitalwatch.o
+ .debug_macro   0x00002058      0x2c7 ./src/Digitalwatch.o
+ .debug_macro   0x0000231f       0x40 ./src/Digitalwatch.o
+ .debug_macro   0x0000235f       0x2e ./src/Digitalwatch.o
+ .debug_macro   0x0000238d       0x63 ./src/GPIO.o
+ .debug_macro   0x000023f0       0x7c ./src/GPIO.o
+ .debug_macro   0x0000246c       0xbe ./src/GPIO.o
+ .debug_macro   0x0000252a      0x1c9 ./src/LCD.o
+ .debug_macro   0x000026f3       0x7c ./src/LCD.o
+ .debug_macro   0x0000276f       0x16 ./src/LCD.o
  .debug_macro   0x00002785       0x71 ./src/LED.o
  .debug_macro   0x000027f6       0xd3 ./src/Melody.o
  .debug_macro   0x000028c9       0x16 ./src/Melody.o
@@ -1639,66 +1639,66 @@ LOAD linker stubs
  .debug_macro   0x00002d8b      0x12d C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
  .debug_macro   0x00002eb8      0xade C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
 
-.debug_line     0x00000000     0x4599
+.debug_line     0x00000000     0x4591
  .debug_line    0x00000000      0x25c ./src/Buzzer.o
  .debug_line    0x0000025c      0x100 ./src/Delay.o
- .debug_line    0x0000035c      0x2c5 ./src/GPIO.o
- .debug_line    0x00000621      0x7b9 ./src/LCD.o
- .debug_line    0x00000dda      0x612 ./src/LCDcounter.o
- .debug_line    0x000013ec      0x2c1 ./src/LED.o
- .debug_line    0x000016ad      0x2e6 ./src/Melody.o
- .debug_line    0x00001993      0x276 ./src/SysTick.o
- .debug_line    0x00001c09      0x488 ./src/Timer.o
- .debug_line    0x00002091      0x307 ./src/clib.o
- .debug_line    0x00002398      0x11e ./src/cr_startup_lpc175x_6x.o
- .debug_line    0x000024b6       0xae ./src/crp.o
- .debug_line    0x00002564      0x2b2 ./src/datetime.o
- .debug_line    0x00002816      0x324 ./src/input.o
- .debug_line    0x00002b3a      0x49a ./src/mode_alarm.o
- .debug_line    0x00002fd4      0x395 ./src/mode_clock.o
- .debug_line    0x00003369      0x18d ./src/mode_manager.o
- .debug_line    0x000034f6      0x1ee ./src/mode_stopwatch.o
- .debug_line    0x000036e4      0x2fc ./src/tactSW.o
- .debug_line    0x000039e0      0x485 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_line    0x00003e65       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_line    0x00003eaf      0x202 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_line    0x000040b1      0x3a7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_line    0x00004458      0x141 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_line    0x0000035c      0x60a ./src/Digitalwatch.o
+ .debug_line    0x00000966      0x2c5 ./src/GPIO.o
+ .debug_line    0x00000c2b      0x7b9 ./src/LCD.o
+ .debug_line    0x000013e4      0x2c1 ./src/LED.o
+ .debug_line    0x000016a5      0x2e6 ./src/Melody.o
+ .debug_line    0x0000198b      0x276 ./src/SysTick.o
+ .debug_line    0x00001c01      0x488 ./src/Timer.o
+ .debug_line    0x00002089      0x307 ./src/clib.o
+ .debug_line    0x00002390      0x11e ./src/cr_startup_lpc175x_6x.o
+ .debug_line    0x000024ae       0xae ./src/crp.o
+ .debug_line    0x0000255c      0x2b2 ./src/datetime.o
+ .debug_line    0x0000280e      0x324 ./src/input.o
+ .debug_line    0x00002b32      0x49a ./src/mode_alarm.o
+ .debug_line    0x00002fcc      0x395 ./src/mode_clock.o
+ .debug_line    0x00003361      0x18d ./src/mode_manager.o
+ .debug_line    0x000034ee      0x1ee ./src/mode_stopwatch.o
+ .debug_line    0x000036dc      0x2fc ./src/tactSW.o
+ .debug_line    0x000039d8      0x485 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x00003e5d       0x4a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_line    0x00003ea7      0x202 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_line    0x000040a9      0x3a7 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_line    0x00004450      0x141 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
-.debug_str      0x00000000     0xd3a0
- .debug_str     0x00000000     0xd3a0 ./src/Buzzer.o
+.debug_str      0x00000000     0xd3a2
+ .debug_str     0x00000000     0xd3a2 ./src/Buzzer.o
                                0x4a63 (size before relaxing)
- .debug_str     0x0000d3a0     0x2edb ./src/Delay.o
- .debug_str     0x0000d3a0     0x4d4a ./src/GPIO.o
- .debug_str     0x0000d3a0     0xab04 ./src/LCD.o
- .debug_str     0x0000d3a0     0xa68e ./src/LCDcounter.o
- .debug_str     0x0000d3a0     0x4f70 ./src/LED.o
- .debug_str     0x0000d3a0     0x48ae ./src/Melody.o
- .debug_str     0x0000d3a0     0x482f ./src/SysTick.o
- .debug_str     0x0000d3a0     0xa450 ./src/Timer.o
- .debug_str     0x0000d3a0     0x4656 ./src/clib.o
- .debug_str     0x0000d3a0     0x3096 ./src/cr_startup_lpc175x_6x.o
- .debug_str     0x0000d3a0     0x2f7f ./src/crp.o
- .debug_str     0x0000d3a0     0x3032 ./src/datetime.o
- .debug_str     0x0000d3a0     0x47eb ./src/input.o
- .debug_str     0x0000d3a0     0x34e0 ./src/mode_alarm.o
- .debug_str     0x0000d3a0     0x33dd ./src/mode_clock.o
- .debug_str     0x0000d3a0     0x2fa5 ./src/mode_manager.o
- .debug_str     0x0000d3a0     0x305f ./src/mode_stopwatch.o
- .debug_str     0x0000d3a0     0x4bab ./src/tactSW.o
- .debug_str     0x0000d3a0     0xa2d4 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
- .debug_str     0x0000d3a0      0x126 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
- .debug_str     0x0000d3a0      0x1c1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
- .debug_str     0x0000d3a0      0x277 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
- .debug_str     0x0000d3a0      0x17a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
+ .debug_str     0x0000d3a2     0x2edb ./src/Delay.o
+ .debug_str     0x0000d3a2     0xa61d ./src/Digitalwatch.o
+ .debug_str     0x0000d3a2     0x4d4a ./src/GPIO.o
+ .debug_str     0x0000d3a2     0xab04 ./src/LCD.o
+ .debug_str     0x0000d3a2     0x4f70 ./src/LED.o
+ .debug_str     0x0000d3a2     0x48ae ./src/Melody.o
+ .debug_str     0x0000d3a2     0x482f ./src/SysTick.o
+ .debug_str     0x0000d3a2     0xa450 ./src/Timer.o
+ .debug_str     0x0000d3a2     0x4656 ./src/clib.o
+ .debug_str     0x0000d3a2     0x3096 ./src/cr_startup_lpc175x_6x.o
+ .debug_str     0x0000d3a2     0x2f7f ./src/crp.o
+ .debug_str     0x0000d3a2     0x3032 ./src/datetime.o
+ .debug_str     0x0000d3a2     0x47eb ./src/input.o
+ .debug_str     0x0000d3a2     0x34e0 ./src/mode_alarm.o
+ .debug_str     0x0000d3a2     0x33dd ./src/mode_clock.o
+ .debug_str     0x0000d3a2     0x2fa5 ./src/mode_manager.o
+ .debug_str     0x0000d3a2     0x305f ./src/mode_stopwatch.o
+ .debug_str     0x0000d3a2     0x4bab ./src/tactSW.o
+ .debug_str     0x0000d3a2     0xa2d4 C:\Users\4104720\Documents\MCUXpressoIDE_25.6.136\20260416GitembeddedC1\20260416GitembeddedC1\embeddedC1\CMSIS_CORE_LPC17xx\Debug\libCMSIS_CORE_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x0000d3a2      0x126 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(__weak__main.o)
+ .debug_str     0x0000d3a2      0x1c1 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(ctype.o)
+ .debug_str     0x0000d3a2      0x277 C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(stdlib.o)
+ .debug_str     0x0000d3a2      0x17a C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(strlen.o)
 
 .comment        0x00000000       0x45
  .comment       0x00000000       0x45 ./src/Buzzer.o
                                  0x46 (size before relaxing)
  .comment       0x00000045       0x46 ./src/Delay.o
+ .comment       0x00000045       0x46 ./src/Digitalwatch.o
  .comment       0x00000045       0x46 ./src/GPIO.o
  .comment       0x00000045       0x46 ./src/LCD.o
- .comment       0x00000045       0x46 ./src/LCDcounter.o
  .comment       0x00000045       0x46 ./src/LED.o
  .comment       0x00000045       0x46 ./src/Melody.o
  .comment       0x00000045       0x46 ./src/SysTick.o
@@ -1726,11 +1726,11 @@ LOAD linker stubs
  .ARM.attributes
                 0x0000002d       0x2d ./src/Delay.o
  .ARM.attributes
-                0x0000005a       0x2d ./src/GPIO.o
+                0x0000005a       0x2d ./src/Digitalwatch.o
  .ARM.attributes
-                0x00000087       0x2d ./src/LCD.o
+                0x00000087       0x2d ./src/GPIO.o
  .ARM.attributes
-                0x000000b4       0x2d ./src/LCDcounter.o
+                0x000000b4       0x2d ./src/LCD.o
  .ARM.attributes
                 0x000000e1       0x2d ./src/LED.o
  .ARM.attributes
@@ -1773,9 +1773,9 @@ LOAD linker stubs
 .debug_frame    0x00000000     0x14bc
  .debug_frame   0x00000000       0x80 ./src/Buzzer.o
  .debug_frame   0x00000080       0xac ./src/Delay.o
- .debug_frame   0x0000012c       0xd8 ./src/GPIO.o
- .debug_frame   0x00000204      0x244 ./src/LCD.o
- .debug_frame   0x00000448       0xdc ./src/LCDcounter.o
+ .debug_frame   0x0000012c       0xdc ./src/Digitalwatch.o
+ .debug_frame   0x00000208       0xd8 ./src/GPIO.o
+ .debug_frame   0x000002e0      0x244 ./src/LCD.o
  .debug_frame   0x00000524       0x98 ./src/LED.o
  .debug_frame   0x000005bc       0xa4 ./src/Melody.o
  .debug_frame   0x00000660       0x8c ./src/SysTick.o

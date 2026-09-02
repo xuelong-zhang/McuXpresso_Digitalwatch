@@ -6,9 +6,9 @@
 C_SRCS += \
 ../src/Buzzer.c \
 ../src/Delay.c \
+../src/Digitalwatch.c \
 ../src/GPIO.c \
 ../src/LCD.c \
-../src/LCDcounter.c \
 ../src/LED.c \
 ../src/Melody.c \
 ../src/SysTick.c \
@@ -27,9 +27,9 @@ C_SRCS += \
 C_DEPS += \
 ./src/Buzzer.d \
 ./src/Delay.d \
+./src/Digitalwatch.d \
 ./src/GPIO.d \
 ./src/LCD.d \
-./src/LCDcounter.d \
 ./src/LED.d \
 ./src/Melody.d \
 ./src/SysTick.d \
@@ -48,9 +48,9 @@ C_DEPS += \
 OBJS += \
 ./src/Buzzer.o \
 ./src/Delay.o \
+./src/Digitalwatch.o \
 ./src/GPIO.o \
 ./src/LCD.o \
-./src/LCDcounter.o \
 ./src/LED.o \
 ./src/Melody.o \
 ./src/SysTick.o \
@@ -79,7 +79,7 @@ src/%.o: ../src/%.c src/subdir.mk
 clean: clean-src
 
 clean-src:
-	-$(RM) ./src/Buzzer.d ./src/Buzzer.o ./src/Delay.d ./src/Delay.o ./src/GPIO.d ./src/GPIO.o ./src/LCD.d ./src/LCD.o ./src/LCDcounter.d ./src/LCDcounter.o ./src/LED.d ./src/LED.o ./src/Melody.d ./src/Melody.o ./src/SysTick.d ./src/SysTick.o ./src/Timer.d ./src/Timer.o ./src/clib.d ./src/clib.o ./src/cr_startup_lpc175x_6x.d ./src/cr_startup_lpc175x_6x.o ./src/crp.d ./src/crp.o ./src/datetime.d ./src/datetime.o ./src/input.d ./src/input.o ./src/mode_alarm.d ./src/mode_alarm.o ./src/mode_clock.d ./src/mode_clock.o ./src/mode_manager.d ./src/mode_manager.o ./src/mode_stopwatch.d ./src/mode_stopwatch.o ./src/tactSW.d ./src/tactSW.o
+	-$(RM) ./src/Buzzer.d ./src/Buzzer.o ./src/Delay.d ./src/Delay.o ./src/Digitalwatch.d ./src/Digitalwatch.o ./src/GPIO.d ./src/GPIO.o ./src/LCD.d ./src/LCD.o ./src/LED.d ./src/LED.o ./src/Melody.d ./src/Melody.o ./src/SysTick.d ./src/SysTick.o ./src/Timer.d ./src/Timer.o ./src/clib.d ./src/clib.o ./src/cr_startup_lpc175x_6x.d ./src/cr_startup_lpc175x_6x.o ./src/crp.d ./src/crp.o ./src/datetime.d ./src/datetime.o ./src/input.d ./src/input.o ./src/mode_alarm.d ./src/mode_alarm.o ./src/mode_clock.d ./src/mode_clock.o ./src/mode_manager.d ./src/mode_manager.o ./src/mode_stopwatch.d ./src/mode_stopwatch.o ./src/tactSW.d ./src/tactSW.o
 
 .PHONY: clean-src
 

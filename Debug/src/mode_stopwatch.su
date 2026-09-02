@@ -1,4 +1,4 @@
 ../src/mode_stopwatch.c:21:6:init_mode_stopwatch	4	static
-../src/mode_stopwatch.c:30:6:mode_stopwatch	8	static
+../src/mode_stopwatch.c:31:6:mode_stopwatch	8	static
 ../src/mode_stopwatch.c:57:6:update_stopwatch	24	static
 ../src/mode_stopwatch.c:79:6:get_stopwatch	24	static

@@ -50,8 +50,8 @@ static void change_setting_value(int direction);
 static int change_cyclic_value(int value, int minimum, int maximum,
                                int direction);
 
-/**
- * 時計モードを初期化する。
+/*
+ 時計モードを初期化する
  */
 void init_mode_clock(void)
 {
@@ -63,8 +63,8 @@ void init_mode_clock(void)
     cursor_update_required = true;
 }
 
-/**
- * 時計モードの入力を処理する。
+/*
+  時計モードの入力を処理する
  */
 bool mode_clock(datetime_t *display_datetime)
 {
@@ -117,16 +117,16 @@ bool mode_clock(datetime_t *display_datetime)
     return update_required;
 }
 
-/**
- * 日付時刻設定中かを取得する。
+/*
+  日付時刻設定中かを取得
  */
 bool is_clock_setting(void)
 {
     return (clock_state == CLOCK_SETTING_STATE);
 }
 
-/**
- * 時計モードから移行する前に設定を終了する。
+/*
+  時計モードから移行する前に設定を終了する
  */
 void exit_clock_setting(void)
 {
@@ -145,8 +145,8 @@ void exit_clock_setting(void)
     LCD_cursor_off();
 }
 
-/**
- * 下線カーソルを更新し、500ms周期でソフトウェア点滅させる。
+/*
+  下線カーソルを更新し、500ms周期でソフトウェア点滅させる
  */
 void update_clock_cursor(void)
 {
@@ -176,8 +176,8 @@ void update_clock_cursor(void)
     }
 }
 
-/**
- * カーソルを直ちに表示し、500msの計時を再開する。
+/*
+  カーソルを直ちに表示し、500msの計時を再開する
  */
 static void restart_cursor_blink(void)
 {
@@ -186,9 +186,9 @@ static void restart_cursor_blink(void)
     cursor_update_required = true;
 }
 
-/**
- * 選択中の設定項目を移動する。
- * directionが0より大きい場合は右、0より小さい場合は左へ移動する。
+/*
+  選択中の設定項目を移動する。
+  directionが0より大きい場合は右、0より小さい場合は左へ移動
  */
 static void move_setting_item(int direction)
 {
@@ -209,9 +209,9 @@ static void move_setting_item(int direction)
     restart_cursor_blink();
 }
 
-/**
- * 選択中の日付時刻の値を増減する。
- * directionが0より大きい場合は加算、0より小さい場合は減算する。
+/*
+  選択中の日付時刻の値を増減する。
+  directionが0より大きい場合は加算、0より小さい場合は減算する
  */
 static void change_setting_value(int direction)
 {
@@ -270,8 +270,8 @@ static void change_setting_value(int direction)
     restart_cursor_blink();
 }
 
-/**
- * 指定範囲内で値を循環させて変更する。
+/*
+  指定範囲内で値を循環させて変更する
  */
 static int change_cyclic_value(int value, int minimum, int maximum,
                                int direction)
@@ -289,6 +289,5 @@ static int change_cyclic_value(int value, int minimum, int maximum,
     return value - 1;
 }
 
-/******************************************************************************
- * ファイル終端
- ******************************************************************************/
+
+

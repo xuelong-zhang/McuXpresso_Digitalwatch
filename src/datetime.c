@@ -16,8 +16,8 @@ static datetime_t current_datetime;
 static int is_leap_year(int year);
 static weekday_t calculate_weekday(int year, int month, int day);
 
-/**
- * 現在の日付時刻を初期化する。
+/*
+  現在の日付時刻を初期化する
  */
 void init_datetime(void)
 {
@@ -30,8 +30,8 @@ void init_datetime(void)
     current_datetime.second = 0;
 }
 
-/**
- * 現在の日付時刻を1秒進める。
+/*
+ 現在の日付時刻を1秒進める
  */
 void update_datetime(void)
 {
@@ -76,8 +76,8 @@ void update_datetime(void)
     }
 }
 
-/**
- * 現在の日付時刻を取得する。
+/*
+ 現在の日付時刻を取得する
  */
 void get_datetime(datetime_t *datetime)
 {
@@ -86,8 +86,8 @@ void get_datetime(datetime_t *datetime)
     }
 }
 
-/**
- * 現在の日付時刻を設定する。
+/*
+  現在の日付時刻を設定する
  */
 void set_datetime(const datetime_t *datetime)
 {
@@ -97,8 +97,8 @@ void set_datetime(const datetime_t *datetime)
     }
 }
 
-/**
- * 各項目を有効範囲に補正し、曜日を再計算する。
+/*
+  各項目を有効範囲に補正し、曜日を再計算する
  */
 void normalize_datetime(datetime_t *datetime)
 {
@@ -153,8 +153,8 @@ void normalize_datetime(datetime_t *datetime)
     );
 }
 
-/**
- * 指定した年月の月末日を取得する。
+/*
+  指定した年月の月末日を取得する
  */
 int get_last_day(int year, int month)
 {
@@ -174,8 +174,8 @@ int get_last_day(int year, int month)
     return last_day_table[month - 1];
 }
 
-/**
- * 指定した年が閏年の場合は0以外を返す。
+/*
+  指定した年が閏年の場合は0以外を返す
  */
 static int is_leap_year(int year)
 {
@@ -194,8 +194,8 @@ static int is_leap_year(int year)
     return 0;
 }
 
-/**
- * グレゴリオ暦に基づいて曜日を計算する。
+/*
+  グレゴリオ暦に基づいて曜日を計算する
  */
 static weekday_t calculate_weekday(int year, int month, int day)
 {

@@ -15,17 +15,18 @@ static unsigned int stopwatch_time_10ms;
 /* 現在の動作状態 */
 static stopwatch_state_t stopwatch_state;
 
-/**
- * ストップウォッチを初期化する。
+/*
+  ストップウォッチを初期化する
  */
 void init_mode_stopwatch(void)
 {
     stopwatch_time_10ms = 0U;
+    //stopwatch_time_10ms = 359998U;
     stopwatch_state = STOPWATCH_STOP;
 }
 
-/**
- * ストップウォッチモードのスイッチ入力を処理する。
+/*
+ ストップウォッチモードのスイッチ入力を処理する
  */
 bool mode_stopwatch(void)
 {
@@ -51,9 +52,8 @@ bool mode_stopwatch(void)
     return false;
 }
 
-/**
- * ストップウォッチの計測時間を更新する。
- */
+/*
+ ストップウォッチの計測時間を更新する */
 bool update_stopwatch(unsigned int elapsed_10ms)
 {
     unsigned int additional_time;
@@ -73,8 +73,8 @@ bool update_stopwatch(unsigned int elapsed_10ms)
     return true;
 }
 
-/**
- * 現在のストップウォッチ表示情報を取得する。
+/*
+ 現在のストップウォッチ表示情報を取得する
  */
 void get_stopwatch(stopwatch_t *stopwatch)
 {
@@ -92,6 +92,4 @@ void get_stopwatch(stopwatch_t *stopwatch)
     stopwatch->state = stopwatch_state;
 }
 
-/******************************************************************************
- * ファイル終端
- ******************************************************************************/
+

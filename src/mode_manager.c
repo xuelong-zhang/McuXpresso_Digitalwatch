@@ -9,16 +9,16 @@
 /* 現在のシステムモード */
 static system_mode_t current_mode;
 
-/**
- * システムモードを初期化する。
+/*
+ システムモードを初期化する。
  */
 void init_mode_manager(void)
 {
     current_mode = MODE_CLOCK;
 }
 
-/**
- * OK／SW1が押されたときにモードを切り替える。
+/*
+ OK／SW1が押されたときにモードを切り替える
  */
 bool update_mode_manager(void)
 {
@@ -44,8 +44,8 @@ bool update_mode_manager(void)
     return true;
 }
 
-/**
- * 現在のシステムモードを取得する。
+/*
+ 現在のシステムモードを取得する
  */
 system_mode_t get_current_mode(void)
 {

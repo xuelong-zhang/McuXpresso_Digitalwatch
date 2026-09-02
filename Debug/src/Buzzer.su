@@ -1,4 +1,4 @@
 ../src/Buzzer.c:23:6:Buzzer_setup	8	static
 ../src/Buzzer.c:37:6:Buzzer_on	8	static
 ../src/Buzzer.c:46:6:Buzzer_off	8	static
-../src/Buzzer.c:55:6:Buzzer_toggle	8	static
+../src/Buzzer.c:54:6:Buzzer_toggle	8	static

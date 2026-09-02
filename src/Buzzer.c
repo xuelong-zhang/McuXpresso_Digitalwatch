@@ -18,7 +18,7 @@
 static volatile bool buzzer_output_high;
 
 /**
- * ブザー端子をGPIO出力として初期化する。
+ * ブザー端子をGPIO出力として初期化する
  */
 void Buzzer_setup(void)
 {
@@ -32,7 +32,7 @@ void Buzzer_setup(void)
 }
 
 /**
- * ブザー出力をHIGHにする。
+ * ブザー出力をHIGHにする
  */
 void Buzzer_on(void)
 {
@@ -41,7 +41,7 @@ void Buzzer_on(void)
 }
 
 /**
- * ブザー出力をLOWにする。
+ * ブザー出力をLOWにする
  */
 void Buzzer_off(void)
 {
@@ -50,8 +50,7 @@ void Buzzer_off(void)
 }
 
 /**
- * ブザー出力を反転する。
- */
+ * ブザー出力を反転する */
 void Buzzer_toggle(void)
 {
     if (buzzer_output_high == true) {

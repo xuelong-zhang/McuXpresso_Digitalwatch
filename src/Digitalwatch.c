@@ -143,20 +143,7 @@ int main(void)
             LCD_reset_lcdbuf();
         }
 
-        /* LCD制御エラーをLEDへ表示する */
-        switch (error_no) {
-        case ERR_TOUT:
-        case ERR_BFULL:
-        case ERR_ESC:
-            LED_on(error_no);
-            break;
 
-        default:
-            LED_off(LED1);
-            LED_off(LED2);
-            LED_off(LED3);
-            break;
-        }
 
         /* 前回確認時から経過した10ms割込み回数を取得する */
         elapsed_10ms = get_time_10ms() - chk_10ms;
@@ -214,13 +201,10 @@ int main(void)
     return 0;
 }
 
-/**
- * 日付時刻をLCD表示バッファへ格納する。
- *
- * 1行目：2026/ 1/ 1(THR)
- * 2行目：     0:00:00
- *
- * @param[in] datetime 表示する日付時刻
+/*
+ * 日付時刻をLCD表示バッファへ格納する
+
+ * 表示する日付時刻
  */
 static void disp_datetime(const datetime_t *datetime)
 {
@@ -281,13 +265,10 @@ static void disp_datetime(const datetime_t *datetime)
     (void)LCD_puts("    ");
 }
 
-/**
+/*
  * ストップウォッチの状態と計測時間をLCD表示バッファへ格納する。
- *
- * 1行目：STOPWATCH STOP
- * 2行目：    00:00:00
- *
- * @param[in] stopwatch 表示するストップウォッチ情報
+
+ * stopwatch 表示するストップウォッチ情報
  */
 static void disp_stopwatch(const stopwatch_t *stopwatch)
 {
@@ -324,14 +305,9 @@ static void disp_stopwatch(const stopwatch_t *stopwatch)
     (void)LCD_puts("    ");
 }
 
-/**
- * アラーム時刻と現在時刻をLCD表示バッファへ格納する。
- *
- * 1行目：ALARM  0:00
- * 2行目：  0:00
- *
- * @param[in] alarm_info アラーム表示情報
- * @param[in] current_datetime 現在の日付時刻
+/*
+ アラーム時刻と現在時刻をLCD表示バッファへ格納する。
+ current_datetime 現在の日付時刻
  */
 static void disp_alarm(const alarm_info_t *alarm_info,
                        const datetime_t *current_datetime)
@@ -379,8 +355,8 @@ static void disp_alarm(const alarm_info_t *alarm_info,
     (void)LCD_puts("         ");
 }
 
-/**
- * システムを初期化する。
+/*
+ システムを初期化する。
  */
 static void SYS_init(void)
 {
@@ -403,11 +379,11 @@ static void SYS_init(void)
     LCD_setup();
 }
 
-/**
+/*
  * 指定されたモードの初期画面をLCDへ表示する。
- *
- * @param[in] mode 表示するシステムモード
- * @param[out] display_datetime 時計表示用の日付時刻
+
+ *  mode 表示するシステムモード
+ *  display_datetime 時計表示用の日付時刻
  */
 static void disp_mode_screen(system_mode_t mode,
                              datetime_t *display_datetime)
@@ -440,7 +416,3 @@ static void disp_mode_screen(system_mode_t mode,
     }
 }
 
-
-/******************************************************************************
- * ファイル終端
- ******************************************************************************/

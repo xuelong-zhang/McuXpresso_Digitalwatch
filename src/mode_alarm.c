@@ -61,15 +61,12 @@ static bool cursor_update_required;
 static void restart_cursor_blink(void);
 static void move_setting_item(void);
 static void change_setting_value(int direction);
-static unsigned int change_cyclic_value(unsigned int value,
-                                        unsigned int minimum,
-                                        unsigned int maximum,
-                                        int direction);
+static unsigned int change_cyclic_value(unsigned int value, unsigned int minimum, unsigned int maximum, int direction);
 static void start_alarm(void);
 static void stop_alarm(void);
 
-/**
- * アラームを初期化する。
+/*
+  アラームを初期化
  */
 void init_mode_alarm(void)
 {
@@ -95,8 +92,8 @@ void init_mode_alarm(void)
     LED_off(LED9);
 }
 
-/**
- * アラームモードの入力を処理する。
+/*
+  アラームモードの入力を処理
  */
 bool mode_alarm(void)
 {
@@ -138,8 +135,8 @@ bool mode_alarm(void)
     return update_required;
 }
 
-/**
- * 目覚ましスイッチでアラーム有効状態を切り替える。
+/*
+  目覚ましスイッチでアラーム有効状態を切り替える
  */
 bool update_alarm_enable(void)
 {
@@ -161,8 +158,8 @@ bool update_alarm_enable(void)
     return true;
 }
 
-/**
- * 現在時刻に従ってアラーム鳴動状態を更新する。
+/*
+  現在時刻に従ってアラーム鳴動状態を更新する
  */
 void update_alarm(const datetime_t *current_datetime)
 {
@@ -189,10 +186,10 @@ void update_alarm(const datetime_t *current_datetime)
     }
 }
 
-/**
- * 10ms経過時間に従ってアラームメロディを更新する。
- *
- * @param[in] elapsed_10ms 経過した10ms割込み回数
+/*
+ 10ms経過時間に従ってアラームメロディを更新する
+
+  elapsed_10ms 経過した10ms割込み回数
  */
 void update_alarm_10ms(unsigned int elapsed_10ms)
 {
@@ -201,8 +198,8 @@ void update_alarm_10ms(unsigned int elapsed_10ms)
     }
 }
 
-/**
- * 現在のアラーム表示情報を取得する。
+/*
+  現在のアラーム表示情報を取得する
  */
 void get_alarm(alarm_info_t *alarm_info)
 {
@@ -222,16 +219,16 @@ void get_alarm(alarm_info_t *alarm_info)
     alarm_info->sounding = alarm_sounding;
 }
 
-/**
- * アラーム時刻設定中かを取得する。
+/*
+  アラーム時刻設定中かを取得する
  */
 bool is_alarm_setting(void)
 {
     return (alarm_state == ALARM_SETTING_STATE);
 }
 
-/**
- * アラーム時刻設定を終了し、編集値を保存する。
+/*
+  アラーム時刻設定を終了し、編集値を保存
  */
 void exit_alarm_setting(void)
 {
@@ -246,8 +243,8 @@ void exit_alarm_setting(void)
     LCD_cursor_off();
 }
 
-/**
- * LCD再表示後のカーソル再設定を要求する。
+/*
+ LCD再表示後のカーソル再設定を要求
  */
 void request_alarm_cursor_update(void)
 {
@@ -256,8 +253,8 @@ void request_alarm_cursor_update(void)
     }
 }
 
-/**
- * 下線カーソルを500ms表示、500ms非表示で点滅させる。
+/*
+  下線カーソルを500ms表示、500ms非表示で点滅させる
  */
 void update_alarm_cursor(void)
 {
@@ -287,8 +284,8 @@ void update_alarm_cursor(void)
     }
 }
 
-/**
- * カーソルを直ちに表示し、500msの計時を再開する。
+/*
+  カーソルを直ちに表示し、500msの計時を再開する
  */
 static void restart_cursor_blink(void)
 {
@@ -297,8 +294,8 @@ static void restart_cursor_blink(void)
     cursor_update_required = true;
 }
 
-/**
- * 選択中の設定項目を分と時の間で切り替える。
+/*
+  選択中の設定項目を分と時の間で切り替える
  */
 static void move_setting_item(void)
 {
@@ -311,8 +308,8 @@ static void move_setting_item(void)
     restart_cursor_blink();
 }
 
-/**
- * 選択中のアラーム時刻を増減する。
+/*
+  選択中のアラーム時刻を増減する
  */
 static void change_setting_value(int direction)
 {
@@ -329,8 +326,8 @@ static void change_setting_value(int direction)
     restart_cursor_blink();
 }
 
-/**
- * 指定範囲内で値を循環させて変更する。
+/*
+  指定範囲内で値を循環させて変更
  */
 static unsigned int change_cyclic_value(unsigned int value,
                                         unsigned int minimum,
@@ -352,8 +349,8 @@ static unsigned int change_cyclic_value(unsigned int value,
     return value - 1U;
 }
 
-/**
- * LED8を点灯し、ブザー鳴動を開始する。
+/*
+  LED8を点灯し、ブザー開始する
  */
 static void start_alarm(void)
 {
@@ -364,8 +361,8 @@ static void start_alarm(void)
     Melody_start();
 }
 
-/**
- * LED8を消灯し、ブザー鳴動を停止する。
+/*
+  LED8を消灯し、ブザー停止
  */
 static void stop_alarm(void)
 {
