@@ -47,6 +47,13 @@ bool update_alarm_enable(void);
 void update_alarm(const datetime_t *current_datetime);
 
 /**
+ * 10ms経過時間に従ってアラームメロディを更新する。
+ *
+ * @param[in] elapsed_10ms 経過した10ms割込み回数
+ */
+void update_alarm_10ms(unsigned int elapsed_10ms);
+
+/**
  * 現在のアラーム表示情報を取得する。
  *
  * @param[out] alarm_info アラーム表示情報の格納先

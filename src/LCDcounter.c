@@ -169,6 +169,9 @@ int main(void)
             /* ストップウォッチは表示モードに関係なく更新する */
             stopwatch_updated = update_stopwatch(elapsed_10ms);
 
+            /* アラームメロディは表示モードに関係なく更新する */
+            update_alarm_10ms(elapsed_10ms);
+
             /* 10ms割込み100回ごとに日付時刻を1秒進める */
             while (past1sec >= 100U) {
                 past1sec -= 100U;

@@ -8,13 +8,14 @@
 #include "LCD.h"
 #include "LED.h"
 #include "SysTick.h"
-#include "Timer.h"
+//#include "Timer.h"
+#include "Melody.h"
 
 /* 10msタイマ50回で500msとする */
 #define CURSOR_BLINK_TIME_10MS       (50U)
 
 /* 125マイクロ秒ごとに出力反転し、約4kHzの方形波とする */
-#define ALARM_HALF_PERIOD_US         (125U)
+//#define ALARM_HALF_PERIOD_US         (125U)
 
 /* アラーム鳴動時間 */
 #define ALARM_DURATION_SECONDS       (60U)
@@ -88,7 +89,8 @@ void init_mode_alarm(void)
     cursor_last_time_10ms = get_time_10ms();
     cursor_update_required = false;
 
-    Timer_stop();
+    //Timer_stop();
+    Melody_init();
     LED_off(LED8);
     LED_off(LED9);
 }
@@ -184,6 +186,18 @@ void update_alarm(const datetime_t *current_datetime)
         ((unsigned int)current_datetime->minute == alarm_minute) &&
         (current_datetime->second == 0)) {
         start_alarm();
+    }
+}
+
+/**
+ * 10ms経過時間に従ってアラームメロディを更新する。
+ *
+ * @param[in] elapsed_10ms 経過した10ms割込み回数
+ */
+void update_alarm_10ms(unsigned int elapsed_10ms)
+{
+    if (alarm_sounding == true) {
+        Melody_update(elapsed_10ms);
     }
 }
 
@@ -346,7 +360,8 @@ static void start_alarm(void)
     alarm_sounding = true;
     alarm_elapsed_seconds = 0U;
     LED_on(LED8);
-    Timer_start(ALARM_HALF_PERIOD_US);
+//    Timer_start(ALARM_HALF_PERIOD_US);
+    Melody_start();
 }
 
 /**
@@ -357,6 +372,7 @@ static void stop_alarm(void)
     alarm_sounding = false;
     alarm_elapsed_seconds = 0U;
     LED_off(LED8);
-    Timer_stop();
+//    Timer_stop();
+    Melody_stop();
 }
 

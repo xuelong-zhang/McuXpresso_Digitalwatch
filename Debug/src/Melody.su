@@ -1,0 +1,5 @@
+../src/Melody.c:144:6:Melody_init	8	static
+../src/Melody.c:156:6:Melody_start	8	static
+../src/Melody.c:167:6:Melody_stop	8	static
+../src/Melody.c:179:6:Melody_update	24	static
+../src/Melody.c:219:13:start_current_note	8	static

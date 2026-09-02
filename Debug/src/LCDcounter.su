@@ -1,6 +1,6 @@
 ../src/LCDcounter.c:40:5:main	128	static
-../src/LCDcounter.c:222:13:disp_datetime	24	static
-../src/LCDcounter.c:289:13:disp_stopwatch	24	static
-../src/LCDcounter.c:333:13:disp_alarm	24	static
-../src/LCDcounter.c:382:13:SYS_init	8	static
-../src/LCDcounter.c:409:13:disp_mode_screen	72	static
+../src/LCDcounter.c:225:13:disp_datetime	24	static
+../src/LCDcounter.c:292:13:disp_stopwatch	24	static
+../src/LCDcounter.c:336:13:disp_alarm	24	static
+../src/LCDcounter.c:385:13:SYS_init	8	static
+../src/LCDcounter.c:412:13:disp_mode_screen	72	static
