@@ -1,6 +1,6 @@
 ../src/Digitalwatch.c:40:5:main	128	static
-../src/Digitalwatch.c:222:13:disp_datetime	24	static
-../src/Digitalwatch.c:286:13:disp_stopwatch	24	static
-../src/Digitalwatch.c:325:13:disp_alarm	24	static
-../src/Digitalwatch.c:374:13:SYS_init	8	static
-../src/Digitalwatch.c:401:13:disp_mode_screen	72	static
+../src/Digitalwatch.c:231:13:disp_datetime	24	static
+../src/Digitalwatch.c:295:13:disp_stopwatch	24	static
+../src/Digitalwatch.c:334:13:disp_alarm	24	static
+../src/Digitalwatch.c:383:13:SYS_init	8	static
+../src/Digitalwatch.c:410:13:disp_mode_screen	72	static

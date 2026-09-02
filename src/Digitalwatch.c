@@ -143,6 +143,29 @@ int main(void)
             LCD_reset_lcdbuf();
         }
 
+        switch (error_no) {
+        case ERR_TOUT:
+        case ERR_BFULL:
+        case ERR_ESC:
+            LED_on(error_no);
+            break;
+
+        default:
+            LED_off(LED1);
+            LED_off(LED2);
+            LED_off(LED3);
+            LED_off(LED4);
+            LED_off(LED5);
+            LED_off(LED6);
+            LED_off(LED7);
+            LED_off(LED10);
+            LED_off(LED11);
+            LED_off(LED12);
+            LED_off(LED13);
+            LED_off(LED14);
+
+            break;
+        }
 
 
         /* 前回確認時から経過した10ms割込み回数を取得する */
